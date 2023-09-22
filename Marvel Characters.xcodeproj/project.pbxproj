@@ -21,7 +21,7 @@
 		BA2DB6DA2ABDF4B500CB29C7 /* CharacterDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6D92ABDF4B500CB29C7 /* CharacterDTO.swift */; };
 		BA2DB6DC2ABDF51100CB29C7 /* Contents.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6DB2ABDF51100CB29C7 /* Contents.swift */; };
 		BA2DB6DE2ABDF6C300CB29C7 /* ThumbnailDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6DD2ABDF6C300CB29C7 /* ThumbnailDTO.swift */; };
-		BA2DB6E02ABDF74E00CB29C7 /* CharacterURLDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6DF2ABDF74E00CB29C7 /* CharacterURLDTO.swift */; };
+		BA2DB6E02ABDF74E00CB29C7 /* URLItemDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6DF2ABDF74E00CB29C7 /* URLItemDTO.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,7 @@
 		BA2DB6D92ABDF4B500CB29C7 /* CharacterDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDTO.swift; sourceTree = "<group>"; };
 		BA2DB6DB2ABDF51100CB29C7 /* Contents.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Contents.swift; sourceTree = "<group>"; };
 		BA2DB6DD2ABDF6C300CB29C7 /* ThumbnailDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThumbnailDTO.swift; sourceTree = "<group>"; };
-		BA2DB6DF2ABDF74E00CB29C7 /* CharacterURLDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterURLDTO.swift; sourceTree = "<group>"; };
+		BA2DB6DF2ABDF74E00CB29C7 /* URLItemDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLItemDTO.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,7 +192,7 @@
 				BA2DB6E12ABDF78300CB29C7 /* Generic */,
 				BA2DB6E22ABDF7E200CB29C7 /* Character */,
 				BA2DB6DD2ABDF6C300CB29C7 /* ThumbnailDTO.swift */,
-				BA2DB6DF2ABDF74E00CB29C7 /* CharacterURLDTO.swift */,
+				BA2DB6DF2ABDF74E00CB29C7 /* URLItemDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -346,7 +346,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BA2DB6D52ABDF2FD00CB29C7 /* ResponseContainer.swift in Sources */,
-				BA2DB6E02ABDF74E00CB29C7 /* CharacterURLDTO.swift in Sources */,
+				BA2DB6E02ABDF74E00CB29C7 /* URLItemDTO.swift in Sources */,
 				BA2DB6AD2ABDEA2500CB29C7 /* Marvel_Characters.xcdatamodeld in Sources */,
 				BA2DB6D82ABDF3D400CB29C7 /* PaginatedResponse.swift in Sources */,
 				BA2DB6DE2ABDF6C300CB29C7 /* ThumbnailDTO.swift in Sources */,
