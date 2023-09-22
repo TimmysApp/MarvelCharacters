@@ -1,0 +1,14 @@
+{
+  "pins" : [
+    {
+      "identity" : "networkui",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TimmysApp/NetworkUI",
+      "state" : {
+        "branch" : "master",
+        "revision" : "47fd6d434f470abd8b83bc218d289c63751c8ac4"
+      }
+    }
+  ],
+  "version" : 2
+}
