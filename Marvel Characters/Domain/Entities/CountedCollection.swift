@@ -12,4 +12,7 @@ typealias CollectionElement = Identifiable & Equatable & Hashable
 struct CountedCollection<Element: CollectionElement>: Equatable, Hashable {
     var count: Int
     var items: [Element]
+    var isEmpty: Bool {
+        return count == 0
+    }
 }
