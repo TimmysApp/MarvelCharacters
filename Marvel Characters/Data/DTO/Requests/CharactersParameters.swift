@@ -10,7 +10,7 @@ import NetworkUI
 
 struct CharactersParameters: Codable, Iterable {
     var name: String?
-    var searchName: String?
-    var limit: Int
-    var offset: Int
+    var nameStartsWith: String?
+    var limit: Int?
+    var offset: Int?
 }

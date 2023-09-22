@@ -7,16 +7,18 @@
 
 import Foundation
 
+typealias CollectionElement = Identifiable & Equatable & Hashable
+
 struct Character: CollectionElement {
     var id: Int
     var name: String
     var description: String
     var modifiedDate: Date
     var thumbnailPath: String
-    var comics: CountedCollection<Content>
-    var series: CountedCollection<Content>
-    var stories: CountedCollection<Content>
-    var events: CountedCollection<Content>
+    var comics: [Content]
+    var series: [Content]
+    var stories: [Content]
+    var events: [Content]
     var thumbnailURL: URL? {
         return URL(string: thumbnailPath)
     }
