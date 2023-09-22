@@ -20,6 +20,6 @@ extension CharacterDTO.Contents {
     struct Summary: Codable {
         var resourceURI: String
         var name: String
-        var type: String
+        var type: String?
     }
 }
