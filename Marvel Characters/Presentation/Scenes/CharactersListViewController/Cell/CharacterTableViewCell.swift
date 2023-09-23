@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SkeletonView
 
 class CharacterTableViewCell: UITableViewCell {
 //MARK: - Properties
@@ -13,15 +14,21 @@ class CharacterTableViewCell: UITableViewCell {
     weak var delegate: CharacterTableViewCellDelegate?
     static let identifier = "CharacterTableViewCell"
 //MARK: - Views
-    private lazy var titlesContainerView = UIView()
+    private lazy var titlesContainerView: UIView = {
+        let view = UIView()
+        view.isSkeletonable = true
+        return view
+    }()
     private lazy var containerView: UIView = {
         let view = UIView()
+        view.isSkeletonable = true
         view.backgroundColor = .cellBackground.withAlphaComponent(0.6)
         view.translatesAutoresizingMaskIntoConstraints = false
         return view
     }()
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
+        label.isSkeletonable = true
         label.font = .systemFont(ofSize: 18, weight: .semibold)
         label.textColor = .text
         label.numberOfLines = 1
@@ -29,6 +36,7 @@ class CharacterTableViewCell: UITableViewCell {
     }()
     private lazy var descriptionLabel: UILabel = {
         let label = UILabel()
+        label.isSkeletonable = true
         label.font = .systemFont(ofSize: 13)
         label.textColor = .secondaryText
         label.numberOfLines = 3
@@ -36,6 +44,7 @@ class CharacterTableViewCell: UITableViewCell {
     }()
     private lazy var containerStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.isSkeletonable = true
         stackView.axis = .horizontal
         stackView.spacing = 10
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -43,6 +52,7 @@ class CharacterTableViewCell: UITableViewCell {
     }()
     private lazy var titlesStackView: UIStackView = {
         let stackView = UIStackView()
+        stackView.isSkeletonable = true
         stackView.axis = .vertical
         stackView.spacing = 2
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -50,6 +60,7 @@ class CharacterTableViewCell: UITableViewCell {
     }()
     private lazy var characterImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.isSkeletonable = true
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
@@ -72,6 +83,8 @@ class CharacterTableViewCell: UITableViewCell {
     }
 //MARK: - Functions
     private func setUp() {
+        isSkeletonable = true
+        contentView.isSkeletonable = true
         backgroundColor = .clear
         contentView.backgroundColor = .clear
         selectionStyle = .none
@@ -103,7 +116,7 @@ class CharacterTableViewCell: UITableViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
             containerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             

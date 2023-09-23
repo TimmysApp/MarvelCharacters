@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Combine
+import SkeletonView
 
 class CharactersListViewController: UIViewController {
 //MARK: - Outlets
@@ -13,7 +15,8 @@ class CharactersListViewController: UIViewController {
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
 //MARK: - Properties
-    var viewModel: CharactersListViewModel
+    private var cancellables = Set<AnyCancellable>()
+    private var viewModel: CharactersListViewModel
 //MARK: - Initializer
     init(viewModel: CharactersListViewModel) {
         self.viewModel = viewModel
@@ -43,6 +46,10 @@ class CharactersListViewController: UIViewController {
         viewModel.reloadTableView = { [weak self] in
             self?.tableView.reloadData()
         }
+        viewModel.$state
+            .sink { [weak self] state in
+                self?.update(state: state)
+            }.store(in: &cancellables)
     }
     private func setUpSearchTextField() {
         searchTextField.layer.cornerRadius = 12
@@ -52,6 +59,18 @@ class CharactersListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
+    }
+    private func update(state: TableViewState) {
+        switch state {
+            case .empty:
+                break
+            case .error(let string):
+                break
+            case .loading:
+                tableView.showAnimatedGradientSkeleton()
+            case .loaded:
+                tableView.hideSkeleton()
+        }
     }
 }
 
@@ -76,5 +95,15 @@ extension CharactersListViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelect(at: indexPath)
+    }
+}
+
+//MARK: - SkeletonTableViewDataSource
+extension CharactersListViewController: SkeletonTableViewDataSource {
+    func collectionSkeletonView(_ skeletonView: UITableView, cellIdentifierForRowAt indexPath: IndexPath) -> ReusableCellIdentifier {
+        return CharacterTableViewCell.identifier
+    }
+    func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
     }
 }
