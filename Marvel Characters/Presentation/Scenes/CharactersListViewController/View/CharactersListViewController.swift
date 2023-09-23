@@ -14,6 +14,7 @@ class CharactersListViewController: UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var searchFieldContainerView: UIView!
 //MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: CharactersListViewModel
@@ -33,7 +34,7 @@ class CharactersListViewController: UIViewController {
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        setUpSearchTextField()
+        setUpLayers()
     }
 //MARK: - Functions
     private func setUp() {
@@ -51,8 +52,11 @@ class CharactersListViewController: UIViewController {
                 self?.update(state: state)
             }.store(in: &cancellables)
     }
-    private func setUpSearchTextField() {
-        searchTextField.layer.cornerRadius = 12
+    private func setUpLayers() {
+        searchFieldContainerView.layer.cornerRadius = 12
+        searchFieldContainerView.layer.masksToBounds = true
+        searchFieldContainerView.layer.borderColor = UIColor.border.cgColor
+        searchFieldContainerView.layer.borderWidth = 1
     }
     private func setUpTableView() {
         tableView.separatorStyle = .none

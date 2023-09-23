@@ -116,7 +116,7 @@ class CharacterTableViewCell: UITableViewCell {
     private func setUpConstraints() {
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5),
-            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 15),
             containerView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             containerView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             
