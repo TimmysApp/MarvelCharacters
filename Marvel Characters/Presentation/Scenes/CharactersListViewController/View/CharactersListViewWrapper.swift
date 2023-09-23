@@ -21,16 +21,12 @@ struct CharactersListViewWrapper: UIViewControllerRepresentable {
 struct CharactersListViewFactory {
     @MainActor static func assemble() -> some View {
         let remoteSource = CharactersService(network: Network(configurations: NetworkConfigs()))
-        let repository = CharactersRepository(remoteSource: remoteSource, localSource: LocalSourceMock())
+        let localSource = CharactersDatabase(objectContext: PersistenceController.shared.container.newBackgroundContext())
+        let remoteSourceGateway = CharactersRemoteSourceGateway(remoteSource: remoteSource, localSource: localSource)
+        let repository = CharactersRepository(remoteSource: remoteSourceGateway, localSource: localSource)
         let useCase = FetchCharactersUseCase(source: repository)
         let viewModel = CharactersListViewModel(useCase: useCase)
         return CharactersListViewWrapper(viewModel: viewModel)
             .edgesIgnoringSafeArea(.all)
-    }
-}
-
-struct LocalSourceMock: CharactersLocalSource {
-    func fetch(using parameters: CharactersParameters) async throws -> [Character] {
-        return []
     }
 }

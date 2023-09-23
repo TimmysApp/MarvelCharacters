@@ -1,6 +1,15 @@
 {
   "pins" : [
     {
+      "identity" : "datastruct",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/TimmysApp/DataStruct",
+      "state" : {
+        "branch" : "master",
+        "revision" : "87c85fc05cd8e61600b773008f2311b58808b5ef"
+      }
+    },
+    {
       "identity" : "networkui",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/TimmysApp/NetworkUI",

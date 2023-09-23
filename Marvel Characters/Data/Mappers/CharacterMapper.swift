@@ -14,16 +14,10 @@ extension Character {
             if let thumbnail = item.thumbnail {
                 thumbnailPath = thumbnail.path + "." + thumbnail.fileExtension
             }
-            return Character(id: item.id, name: item.name, description: item.description, thumbnailPath: thumbnailPath, comics: map(item.comics), series: map(item.series), stories: map(item.stories), events: map(item.events), additionalLinks: AdditionalLink.Mapper.map(item.urls))
+            return Character(id: item.id, name: item.name, description: item.description, thumbnailPath: thumbnailPath, additionalLinks: AdditionalLink.Mapper.map(item.urls))
         }
         static func map(_ items: [CharacterDTO]) -> [Character] {
             return items.map({map($0)})
-        }
-        static func map(_ content: CharacterDTO.Contents.Summary) -> Character.Content {
-            return Character.Content(resourceURI: content.resourceURI, name: content.name, type: content.type)
-        }
-        static func map(_ content: CharacterDTO.Contents?) -> [Character.Content] {
-            return (content?.items ?? []).map({map($0)})
         }
     }
 }

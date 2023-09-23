@@ -25,3 +25,13 @@ extension CharactersService: CharactersRemoteSource {
         return Character.Mapper.map(charactersDTO.data.results)
     }
 }
+
+struct CharactersRemoteSourceGateway: CharactersRemoteSource {
+    let remoteSource: CharactersRemoteSource
+    let localSource: CharactersLocalSource
+    func fetch(using parameters: CharactersParameters) async throws -> [Character] {
+        let result = try await remoteSource.fetch(using: parameters)
+        try await localSource.update(using: result)
+        return result
+    }
+}

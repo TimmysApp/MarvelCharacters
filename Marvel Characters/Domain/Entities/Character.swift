@@ -6,18 +6,15 @@
 //
 
 import Foundation
+import DataStruct
 
 typealias CollectionElement = Identifiable & Equatable & Hashable
 
 struct Character: CollectionElement {
-    var id: Int
+    var id: Int?
     var name: String
     var description: String
     var thumbnailPath: String?
-    var comics: [Content]
-    var series: [Content]
-    var stories: [Content]
-    var events: [Content]
     var thumbnailURL: URL? {
         guard let thumbnailPath else {
             return nil
@@ -25,16 +22,16 @@ struct Character: CollectionElement {
         return URL(string: thumbnailPath)
     }
     var additionalLinks: [AdditionalLink]
+    static let modelData = ModelData<Character>()
 }
 
-extension Character {
-    struct Content: CollectionElement {
-        var id = UUID()
-        var resourceURI: String
-        var name: String
-        var type: String?
-        var isStory: Bool {
-            return type != nil
+//MARK: - Datable
+extension Character: Datable {
+    static var dataKeys = ["description": "characterDescription"]
+    static func map(from object: CharacterData?) -> Character? {
+        guard let object else {
+            return nil
         }
+        return Character(id: Int(object.oid), name: object.name ?? "", description: object.characterDescription ?? "", thumbnailPath: object.thumbnailPath, additionalLinks: object.additionalLinks?.model() ?? [])
     }
 }

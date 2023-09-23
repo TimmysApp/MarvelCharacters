@@ -13,6 +13,7 @@
 		BA00B9282ABECC3700FE94BE /* CharactersRemoteSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9272ABECC3700FE94BE /* CharactersRemoteSourceStub.swift */; };
 		BA00B92A2ABECCB100FE94BE /* ErrorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9292ABECCB100FE94BE /* ErrorStub.swift */; };
 		BA00B92C2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B92B2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift */; };
+		BA04934D2ABF04F90045EB0A /* DataStruct in Frameworks */ = {isa = PBXBuildFile; productRef = BA04934C2ABF04F90045EB0A /* DataStruct */; };
 		BA2509992ABE081500871222 /* NetworkUI in Frameworks */ = {isa = PBXBuildFile; productRef = BA2509982ABE081500871222 /* NetworkUI */; };
 		BA25099B2ABE082700871222 /* NetworkConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099A2ABE082700871222 /* NetworkConfigs.swift */; };
 		BA25099E2ABE088300871222 /* CharactersRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099D2ABE088300871222 /* CharactersRoute.swift */; };
@@ -26,7 +27,6 @@
 		BA2DB6A82ABDEA2500CB29C7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BA2DB6A72ABDEA2500CB29C7 /* Preview Assets.xcassets */; };
 		BA2DB6AA2ABDEA2500CB29C7 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6A92ABDEA2500CB29C7 /* Persistence.swift */; };
 		BA2DB6AD2ABDEA2500CB29C7 /* Marvel_Characters.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6AB2ABDEA2500CB29C7 /* Marvel_Characters.xcdatamodeld */; };
-		BA2DB6B72ABDEA2500CB29C7 /* CharacterEntityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6B62ABDEA2500CB29C7 /* CharacterEntityTests.swift */; };
 		BA2DB6C12ABDEA2500CB29C7 /* Marvel_CharactersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6C02ABDEA2500CB29C7 /* Marvel_CharactersUITests.swift */; };
 		BA2DB6C32ABDEA2500CB29C7 /* Marvel_CharactersUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6C22ABDEA2500CB29C7 /* Marvel_CharactersUITestsLaunchTests.swift */; };
 		BA2DB6D52ABDF2FD00CB29C7 /* ResponseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA2DB6D42ABDF2FD00CB29C7 /* ResponseContainer.swift */; };
@@ -92,7 +92,6 @@
 		BA2DB6A92ABDEA2500CB29C7 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		BA2DB6AC2ABDEA2500CB29C7 /* Marvel_Characters.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Marvel_Characters.xcdatamodel; sourceTree = "<group>"; };
 		BA2DB6B22ABDEA2500CB29C7 /* Marvel CharactersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel CharactersTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BA2DB6B62ABDEA2500CB29C7 /* CharacterEntityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterEntityTests.swift; sourceTree = "<group>"; };
 		BA2DB6BC2ABDEA2500CB29C7 /* Marvel CharactersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marvel CharactersUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BA2DB6C02ABDEA2500CB29C7 /* Marvel_CharactersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_CharactersUITests.swift; sourceTree = "<group>"; };
 		BA2DB6C22ABDEA2500CB29C7 /* Marvel_CharactersUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marvel_CharactersUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -127,6 +126,7 @@
 			files = (
 				BAAF6E9B2ABF02CE00A3EC29 /* SkeletonView in Frameworks */,
 				BA2509992ABE081500871222 /* NetworkUI in Frameworks */,
+				BA04934D2ABF04F90045EB0A /* DataStruct in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -387,7 +387,6 @@
 		BA2DB6EE2ABE02CA00CB29C7 /* Character */ = {
 			isa = PBXGroup;
 			children = (
-				BA2DB6B62ABDEA2500CB29C7 /* CharacterEntityTests.swift */,
 				BA2DB6EC2ABDFF5400CB29C7 /* CharacterEntityMockFactory.swift */,
 			);
 			path = Character;
@@ -482,6 +481,7 @@
 			packageProductDependencies = (
 				BA2509982ABE081500871222 /* NetworkUI */,
 				BAAF6E9A2ABF02CE00A3EC29 /* SkeletonView */,
+				BA04934C2ABF04F90045EB0A /* DataStruct */,
 			);
 			productName = "Marvel Characters";
 			productReference = BA2DB69D2ABDEA2400CB29C7 /* Marvel Characters.app */;
@@ -558,6 +558,7 @@
 			packageReferences = (
 				BA2509972ABE081500871222 /* XCRemoteSwiftPackageReference "NetworkUI" */,
 				BAAF6E992ABF02CE00A3EC29 /* XCRemoteSwiftPackageReference "SkeletonView" */,
+				BA04934B2ABF04F90045EB0A /* XCRemoteSwiftPackageReference "DataStruct" */,
 			);
 			productRefGroup = BA2DB69E2ABDEA2400CB29C7 /* Products */;
 			projectDirPath = "";
@@ -646,7 +647,6 @@
 				BA00B92C2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift in Sources */,
 				BA00B92A2ABECCB100FE94BE /* ErrorStub.swift in Sources */,
 				BA00B9282ABECC3700FE94BE /* CharactersRemoteSourceStub.swift in Sources */,
-				BA2DB6B72ABDEA2500CB29C7 /* CharacterEntityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -965,6 +965,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		BA04934B2ABF04F90045EB0A /* XCRemoteSwiftPackageReference "DataStruct" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/TimmysApp/DataStruct";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		BA2509972ABE081500871222 /* XCRemoteSwiftPackageReference "NetworkUI" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/TimmysApp/NetworkUI";
@@ -984,6 +992,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		BA04934C2ABF04F90045EB0A /* DataStruct */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BA04934B2ABF04F90045EB0A /* XCRemoteSwiftPackageReference "DataStruct" */;
+			productName = DataStruct;
+		};
 		BA2509982ABE081500871222 /* NetworkUI */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = BA2509972ABE081500871222 /* XCRemoteSwiftPackageReference "NetworkUI" */;
