@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */; };
 		BA00B9222ABEC74300FE94BE /* AdditionalLinkMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */; };
+		BA00B9242ABECBCD00FE94BE /* CharactersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9232ABECBCD00FE94BE /* CharactersRepositoryTests.swift */; };
+		BA00B9282ABECC3700FE94BE /* CharactersRemoteSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9272ABECC3700FE94BE /* CharactersRemoteSourceStub.swift */; };
+		BA00B92A2ABECCB100FE94BE /* ErrorStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9292ABECCB100FE94BE /* ErrorStub.swift */; };
+		BA00B92C2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B92B2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift */; };
 		BA2509992ABE081500871222 /* NetworkUI in Frameworks */ = {isa = PBXBuildFile; productRef = BA2509982ABE081500871222 /* NetworkUI */; };
 		BA25099B2ABE082700871222 /* NetworkConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099A2ABE082700871222 /* NetworkConfigs.swift */; };
 		BA25099E2ABE088300871222 /* CharactersRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099D2ABE088300871222 /* CharactersRoute.swift */; };
@@ -61,6 +65,10 @@
 /* Begin PBXFileReference section */
 		BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 		BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalLinkMapper.swift; sourceTree = "<group>"; };
+		BA00B9232ABECBCD00FE94BE /* CharactersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryTests.swift; sourceTree = "<group>"; };
+		BA00B9272ABECC3700FE94BE /* CharactersRemoteSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRemoteSourceStub.swift; sourceTree = "<group>"; };
+		BA00B9292ABECCB100FE94BE /* ErrorStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorStub.swift; sourceTree = "<group>"; };
+		BA00B92B2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLocalSourceStub.swift; sourceTree = "<group>"; };
 		BA25099A2ABE082700871222 /* NetworkConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigs.swift; sourceTree = "<group>"; };
 		BA25099D2ABE088300871222 /* CharactersRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRoute.swift; sourceTree = "<group>"; };
 		BA2509A02ABE090B00871222 /* CharactersParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersParameters.swift; sourceTree = "<group>"; };
@@ -137,6 +145,24 @@
 				BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */,
 			);
 			path = Mappers;
+			sourceTree = "<group>";
+		};
+		BA00B9252ABECBCF00FE94BE /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+				BA00B9262ABECBD500FE94BE /* Characters */,
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		BA00B9262ABECBD500FE94BE /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				BA00B9232ABECBCD00FE94BE /* CharactersRepositoryTests.swift */,
+				BA00B9272ABECC3700FE94BE /* CharactersRemoteSourceStub.swift */,
+				BA00B92B2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift */,
+			);
+			path = Characters;
 			sourceTree = "<group>";
 		};
 		BA25099C2ABE082E00871222 /* Network */ = {
@@ -222,6 +248,8 @@
 			isa = PBXGroup;
 			children = (
 				BA2DB6EB2ABDFEFF00CB29C7 /* Entities */,
+				BA00B9252ABECBCF00FE94BE /* Repositories */,
+				BA00B9292ABECCB100FE94BE /* ErrorStub.swift */,
 			);
 			path = "Marvel CharactersTests";
 			sourceTree = "<group>";
@@ -545,7 +573,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BA00B9242ABECBCD00FE94BE /* CharactersRepositoryTests.swift in Sources */,
 				BA2DB6ED2ABDFF5400CB29C7 /* CharacterEntityMockFactory.swift in Sources */,
+				BA00B92C2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift in Sources */,
+				BA00B92A2ABECCB100FE94BE /* ErrorStub.swift in Sources */,
+				BA00B9282ABECC3700FE94BE /* CharactersRemoteSourceStub.swift in Sources */,
 				BA2DB6B72ABDEA2500CB29C7 /* CharacterEntityTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
