@@ -10,6 +10,6 @@ import NetworkUI
 
 struct AuthenticationParameters: Codable, Iterable {
     var ts: String
-    var apiKey: String
+    var apikey: String
     var hash: String
 }

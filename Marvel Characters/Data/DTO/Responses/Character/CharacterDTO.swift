@@ -9,14 +9,13 @@ import Foundation
 
 struct CharacterDTO: Codable {
     var id: Int
-    var name: String
-    var description: String
-    var modified: Date
-    var thumbnail: ThumbnailDTO
-    var resourceURI: String
-    var comics: Contents
-    var series: Contents
-    var stories: Contents
-    var events: Contents
-    var urls: [URLItemDTO]
+    @DefaultCodable var name: String
+    @DefaultCodable var description: String
+    var thumbnail: ThumbnailDTO?
+    @DefaultCodable var resourceURI: String
+    var comics: Contents?
+    var series: Contents?
+    var stories: Contents?
+    var events: Contents?
+    @DefaultCodable var urls: [URLItemDTO]
 }

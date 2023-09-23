@@ -8,9 +8,9 @@
 import Foundation
 
 struct PaginatedResponse<Element: Codable>: Codable {
-    var offset: Int
-    var limit: Int
-    var total: Int
-    var count: Int
-    var results: [Element]
+    @DefaultCodable var offset: Int
+    @DefaultCodable var limit: Int
+    @DefaultCodable var total: Int
+    @DefaultCodable var count: Int
+    @DefaultCodable var results: [Element]
 }

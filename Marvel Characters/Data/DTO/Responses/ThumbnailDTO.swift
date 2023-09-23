@@ -8,6 +8,6 @@
 import Foundation
 
 struct ThumbnailDTO: Codable {
-    var path: String
-    var fileExtension: String
+    @DefaultCodable var path: String
+    @DefaultCodable var fileExtension: String
 }

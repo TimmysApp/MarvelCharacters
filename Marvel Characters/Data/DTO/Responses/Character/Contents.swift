@@ -9,17 +9,17 @@ import Foundation
 
 extension CharacterDTO {
     struct Contents: Codable {
-        var available: Int
-        var collectionURI: String
-        var items: [Summary]
-        var returned: Int
+        @DefaultCodable var available: Int
+        @DefaultCodable var collectionURI: String
+        @DefaultCodable var items: [Summary]
+        @DefaultCodable var returned: Int
     }
 }
 
 extension CharacterDTO.Contents {
     struct Summary: Codable {
-        var resourceURI: String
-        var name: String
-        var type: String?
+        @DefaultCodable var resourceURI: String
+        @DefaultCodable var name: String
+        @DefaultCodable var type: String?
     }
 }

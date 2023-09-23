@@ -8,6 +8,6 @@
 import Foundation
 
 struct URLItemDTO: Codable {
-    var type: String
-    var url: String
+    @DefaultCodable var type: String
+    @DefaultCodable var url: String
 }

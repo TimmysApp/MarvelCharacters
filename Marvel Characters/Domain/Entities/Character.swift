@@ -13,13 +13,15 @@ struct Character: CollectionElement {
     var id: Int
     var name: String
     var description: String
-    var modifiedDate: Date
-    var thumbnailPath: String
+    var thumbnailPath: String?
     var comics: [Content]
     var series: [Content]
     var stories: [Content]
     var events: [Content]
     var thumbnailURL: URL? {
+        guard let thumbnailPath else {
+            return nil
+        }
         return URL(string: thumbnailPath)
     }
     var additionalLinks: [AdditionalLink]
