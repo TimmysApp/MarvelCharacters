@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */; };
+		BA00B9222ABEC74300FE94BE /* AdditionalLinkMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */; };
 		BA2509992ABE081500871222 /* NetworkUI in Frameworks */ = {isa = PBXBuildFile; productRef = BA2509982ABE081500871222 /* NetworkUI */; };
 		BA25099B2ABE082700871222 /* NetworkConfigs.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099A2ABE082700871222 /* NetworkConfigs.swift */; };
 		BA25099E2ABE088300871222 /* CharactersRoute.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA25099D2ABE088300871222 /* CharactersRoute.swift */; };
@@ -57,6 +59,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
+		BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalLinkMapper.swift; sourceTree = "<group>"; };
 		BA25099A2ABE082700871222 /* NetworkConfigs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigs.swift; sourceTree = "<group>"; };
 		BA25099D2ABE088300871222 /* CharactersRoute.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRoute.swift; sourceTree = "<group>"; };
 		BA2509A02ABE090B00871222 /* CharactersParameters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersParameters.swift; sourceTree = "<group>"; };
@@ -117,6 +121,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BA00B91A2ABEC33C00FE94BE /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				BAB0C3312ABE4C9A00B21345 /* CharactersRemoteSource.swift */,
+				BAB0C3342ABE4CF500B21345 /* CharactersLocalSource.swift */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		BA00B9202ABEC64900FE94BE /* Mappers */ = {
+			isa = PBXGroup;
+			children = (
+				BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */,
+				BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */,
+			);
+			path = Mappers;
+			sourceTree = "<group>";
+		};
 		BA25099C2ABE082E00871222 /* Network */ = {
 			isa = PBXGroup;
 			children = (
@@ -236,6 +258,7 @@
 				BA2DB6D62ABDF30100CB29C7 /* DTO */,
 				BA25099C2ABE082E00871222 /* Network */,
 				BAB0C3302ABE4C5F00B21345 /* Repositories */,
+				BA00B9202ABEC64900FE94BE /* Mappers */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -349,8 +372,7 @@
 		BAB0C3332ABE4CA700B21345 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				BAB0C3312ABE4C9A00B21345 /* CharactersRemoteSource.swift */,
-				BAB0C3342ABE4CF500B21345 /* CharactersLocalSource.swift */,
+				BA00B91A2ABEC33C00FE94BE /* Characters */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -509,7 +531,9 @@
 				BA2DB6A32ABDEA2400CB29C7 /* ContentView.swift in Sources */,
 				BAB0C3352ABE4CF500B21345 /* CharactersLocalSource.swift in Sources */,
 				BA2509A42ABE097600871222 /* AuthenticationParametersFactory.swift in Sources */,
+				BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */,
 				BA2DB6DC2ABDF51100CB29C7 /* Contents.swift in Sources */,
+				BA00B9222ABEC74300FE94BE /* AdditionalLinkMapper.swift in Sources */,
 				BA2509A82ABE0A2100871222 /* MD5Hasher.swift in Sources */,
 				BA25099B2ABE082700871222 /* NetworkConfigs.swift in Sources */,
 				BAB0C32F2ABE4C5C00B21345 /* CharactersRepository.swift in Sources */,
