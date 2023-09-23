@@ -10,4 +10,8 @@ import Foundation
 struct ThumbnailDTO: Codable {
     @DefaultCodable var path: String
     @DefaultCodable var fileExtension: String
+    enum CodingKeys: String, CodingKey {
+        case path
+        case fileExtension = "extension"
+    }
 }
