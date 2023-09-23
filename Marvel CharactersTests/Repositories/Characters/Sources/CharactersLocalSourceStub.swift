@@ -10,7 +10,9 @@ import Foundation
 
 struct CharactersLocalSourceStub: CharactersLocalSource {
     let expectedResponse: Result<[Character], Error>
-    func fetch(using parameters: CharactersParameters) async throws -> [Character] {
+    func fetch() async throws -> [Character] {
         return try expectedResponse.get()
+    }
+    func update(using data: [Character]) async throws {
     }
 }

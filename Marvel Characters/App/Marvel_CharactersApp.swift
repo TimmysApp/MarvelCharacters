@@ -9,8 +9,6 @@ import SwiftUI
 
 @main
 struct Marvel_CharactersApp: App {
-    let persistenceController = PersistenceController.shared
-
     var body: some Scene {
         WindowGroup {
             CharactersListViewFactory.assemble()

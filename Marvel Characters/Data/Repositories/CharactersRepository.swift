@@ -15,7 +15,7 @@ struct CharactersRepository {
 //MARK: - CharactersSource
 extension CharactersRepository: CharactersSource {
     func fetch(using parameters: CharactersParameters) async throws -> [Character] {
-        let localCharacters = (try? await localSource.fetch(using: parameters)) ?? []
+        let localCharacters = (try? await localSource.fetch()) ?? []
         guard localCharacters.isEmpty else {
             Task.detached(priority: .background) {
                 _ = try? await remoteSource.fetch(using: parameters)
