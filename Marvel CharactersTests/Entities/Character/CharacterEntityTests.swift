@@ -19,19 +19,19 @@ final class CharacterEntityTests: XCTestCase {
     }
 //MARK: - Tests
     func testCharacterContentStoriesReturnsIsStoryTrue() {
-        let array = mockCharacter.stories.items
+        let array = mockCharacter.stories
         XCTAssertTrue(isStory(array))
     }
     func testCharacterContentEventsReturnsIsStoryFalse() {
-        let array = mockCharacter.events.items
+        let array = mockCharacter.events
         XCTAssertTrue(!isStory(array))
     }
     func testCharacterContentCommicsReturnsIsStoryFalse() {
-        let array = mockCharacter.comics.items
+        let array = mockCharacter.comics
         XCTAssertTrue(!isStory(array))
     }
     func testCharacterContentSeriesReturnsIsStoryFalse() {
-        let array = mockCharacter.series.items
+        let array = mockCharacter.series
         XCTAssertTrue(!isStory(array))
     }
 }
