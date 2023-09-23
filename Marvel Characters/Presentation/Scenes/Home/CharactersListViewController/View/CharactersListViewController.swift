@@ -17,9 +17,9 @@ class CharactersListViewController: UIViewController {
     @IBOutlet weak var searchFieldContainerView: UIView!
 //MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
-    private var viewModel: CharactersListViewModel
+    private var viewModel: HomeViewModel
 //MARK: - Initializer
-    init(viewModel: CharactersListViewModel) {
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }

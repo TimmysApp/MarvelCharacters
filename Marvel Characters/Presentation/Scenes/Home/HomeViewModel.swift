@@ -1,5 +1,5 @@
 //
-//  CharactersListViewModel.swift
+//  HomeViewModel.swift
 //  Marvel Characters
 //
 //  Created by Joe Maghzal on 23/09/2023.
@@ -7,15 +7,15 @@
 
 import Foundation
 
-@MainActor class CharactersListViewModel {
+@MainActor class HomeViewModel: ObservableObject {
 //MARK: - Publishers
     @Published var state = TableViewState.loading
+    @Published var characters = [Character]()
 //MARK: - Closures
     var reloadTableView: (() -> Void)?
 //MARK: - Properties
     private let limit = 15
     private let useCase: FetchCharactersUseCase
-    private var characters = [Character]()
     private(set) var count = 0
 //MARK: - Initializer
     init(useCase: FetchCharactersUseCase) {

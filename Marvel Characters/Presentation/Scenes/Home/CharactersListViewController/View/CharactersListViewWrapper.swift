@@ -9,7 +9,7 @@ import SwiftUI
 import NetworkUI
 
 struct CharactersListViewWrapper: UIViewControllerRepresentable {
-    let viewModel: CharactersListViewModel
+    let viewModel: HomeViewModel
     func makeUIViewController(context: Context) -> CharactersListViewController {
         let viewController = CharactersListViewController(viewModel: viewModel)
         return viewController
@@ -25,7 +25,7 @@ struct CharactersListViewFactory {
         let remoteSourceGateway = CharactersRemoteSourceGateway(remoteSource: remoteSource, localSource: localSource)
         let repository = CharactersRepository(remoteSource: remoteSourceGateway, localSource: localSource)
         let useCase = FetchCharactersUseCase(source: repository)
-        let viewModel = CharactersListViewModel(useCase: useCase)
+        let viewModel = HomeViewModel(useCase: useCase)
         return CharactersListViewWrapper(viewModel: viewModel)
             .edgesIgnoringSafeArea(.all)
     }

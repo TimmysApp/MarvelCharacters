@@ -42,7 +42,7 @@
 		BA53C48C2ABF317B00F2ED45 /* PersistenceControllerStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA53C48B2ABF317B00F2ED45 /* PersistenceControllerStub.swift */; };
 		BAAF6E832ABED6D100A3EC29 /* CharactersListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E812ABED6D100A3EC29 /* CharactersListViewController.swift */; };
 		BAAF6E842ABED6D100A3EC29 /* CharactersListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BAAF6E822ABED6D100A3EC29 /* CharactersListViewController.xib */; };
-		BAAF6E882ABED92D00A3EC29 /* CharactersListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E872ABED92D00A3EC29 /* CharactersListViewModel.swift */; };
+		BAAF6E882ABED92D00A3EC29 /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E872ABED92D00A3EC29 /* HomeViewModel.swift */; };
 		BAAF6E8B2ABED9D700A3EC29 /* CharactersListViewWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E8A2ABED9D700A3EC29 /* CharactersListViewWrapper.swift */; };
 		BAAF6E912ABEE0B600A3EC29 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E902ABEE0B600A3EC29 /* CharacterTableViewCell.swift */; };
 		BAAF6E942ABEE16500A3EC29 /* CharacterTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E932ABEE16500A3EC29 /* CharacterTableCellViewModel.swift */; };
@@ -54,6 +54,10 @@
 		BAB0C32F2ABE4C5C00B21345 /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C32E2ABE4C5C00B21345 /* CharactersRepository.swift */; };
 		BAB0C3322ABE4C9A00B21345 /* CharactersRemoteSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C3312ABE4C9A00B21345 /* CharactersRemoteSource.swift */; };
 		BAB0C3352ABE4CF500B21345 /* CharactersLocalSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C3342ABE4CF500B21345 /* CharactersLocalSource.swift */; };
+		BABCC27A2ABF84CD0071A0B7 /* ScrollCarouselView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABCC2792ABF84CD0071A0B7 /* ScrollCarouselView.swift */; };
+		BABCC27D2ABF88CC0071A0B7 /* ScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABCC27C2ABF88CC0071A0B7 /* ScrollViewExtensions.swift */; };
+		BABCC2802ABF890E0071A0B7 /* ViewOffsetPrefrenceKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABCC27F2ABF890E0071A0B7 /* ViewOffsetPrefrenceKey.swift */; };
+		BACA1D662ABF7F8E00AECAB5 /* DicoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA1D652ABF7F8E00AECAB5 /* DicoverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -110,7 +114,7 @@
 		BA53C48B2ABF317B00F2ED45 /* PersistenceControllerStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceControllerStub.swift; sourceTree = "<group>"; };
 		BAAF6E812ABED6D100A3EC29 /* CharactersListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewController.swift; sourceTree = "<group>"; };
 		BAAF6E822ABED6D100A3EC29 /* CharactersListViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CharactersListViewController.xib; sourceTree = "<group>"; };
-		BAAF6E872ABED92D00A3EC29 /* CharactersListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewModel.swift; sourceTree = "<group>"; };
+		BAAF6E872ABED92D00A3EC29 /* HomeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		BAAF6E8A2ABED9D700A3EC29 /* CharactersListViewWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersListViewWrapper.swift; sourceTree = "<group>"; };
 		BAAF6E902ABEE0B600A3EC29 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		BAAF6E932ABEE16500A3EC29 /* CharacterTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableCellViewModel.swift; sourceTree = "<group>"; };
@@ -121,6 +125,10 @@
 		BAB0C32E2ABE4C5C00B21345 /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
 		BAB0C3312ABE4C9A00B21345 /* CharactersRemoteSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRemoteSource.swift; sourceTree = "<group>"; };
 		BAB0C3342ABE4CF500B21345 /* CharactersLocalSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersLocalSource.swift; sourceTree = "<group>"; };
+		BABCC2792ABF84CD0071A0B7 /* ScrollCarouselView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollCarouselView.swift; sourceTree = "<group>"; };
+		BABCC27C2ABF88CC0071A0B7 /* ScrollViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewExtensions.swift; sourceTree = "<group>"; };
+		BABCC27F2ABF890E0071A0B7 /* ViewOffsetPrefrenceKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewOffsetPrefrenceKey.swift; sourceTree = "<group>"; };
+		BACA1D652ABF7F8E00AECAB5 /* DicoverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DicoverView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -327,6 +335,7 @@
 		BA2DB6D32ABDEB8400CB29C7 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				BABCC27B2ABF88AE0071A0B7 /* Components */,
 				BAAF6E862ABED6E300A3EC29 /* Scenes */,
 				BA2DB6A22ABDEA2400CB29C7 /* ContentView.swift */,
 			);
@@ -419,7 +428,6 @@
 			children = (
 				BAAF6E922ABEE0B900A3EC29 /* Cell */,
 				BAAF6E892ABED93300A3EC29 /* View */,
-				BAAF6E872ABED92D00A3EC29 /* CharactersListViewModel.swift */,
 			);
 			path = CharactersListViewController;
 			sourceTree = "<group>";
@@ -427,7 +435,7 @@
 		BAAF6E862ABED6E300A3EC29 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
-				BAAF6E852ABED6D700A3EC29 /* CharactersListViewController */,
+				BABCC2812ABF90BA0071A0B7 /* Home */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -482,6 +490,42 @@
 				BA00B91A2ABEC33C00FE94BE /* Characters */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		BABCC27B2ABF88AE0071A0B7 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				BABCC27E2ABF89040071A0B7 /* CarouselView */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		BABCC27E2ABF89040071A0B7 /* CarouselView */ = {
+			isa = PBXGroup;
+			children = (
+				BABCC2792ABF84CD0071A0B7 /* ScrollCarouselView.swift */,
+				BABCC27C2ABF88CC0071A0B7 /* ScrollViewExtensions.swift */,
+				BABCC27F2ABF890E0071A0B7 /* ViewOffsetPrefrenceKey.swift */,
+			);
+			path = CarouselView;
+			sourceTree = "<group>";
+		};
+		BABCC2812ABF90BA0071A0B7 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				BAAF6E852ABED6D700A3EC29 /* CharactersListViewController */,
+				BACA1D672ABF7F9200AECAB5 /* DiscoverView */,
+				BAAF6E872ABED92D00A3EC29 /* HomeViewModel.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		BACA1D672ABF7F9200AECAB5 /* DiscoverView */ = {
+			isa = PBXGroup;
+			children = (
+				BACA1D652ABF7F8E00AECAB5 /* DicoverView.swift */,
+			);
+			path = DiscoverView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -633,13 +677,16 @@
 				BAAF6E982ABEFB2700A3EC29 /* Color.swift in Sources */,
 				BA2DB6EA2ABDFCC000CB29C7 /* AdditionalLink.swift in Sources */,
 				BA2DB6E02ABDF74E00CB29C7 /* URLItemDTO.swift in Sources */,
+				BACA1D662ABF7F8E00AECAB5 /* DicoverView.swift in Sources */,
 				BA2DB6E42ABDF9AE00CB29C7 /* Character.swift in Sources */,
 				BAAF6E942ABEE16500A3EC29 /* CharacterTableCellViewModel.swift in Sources */,
 				BAB0C3322ABE4C9A00B21345 /* CharactersRemoteSource.swift in Sources */,
 				BA2509A62ABE097F00871222 /* AuthenticationParameters.swift in Sources */,
-				BAAF6E882ABED92D00A3EC29 /* CharactersListViewModel.swift in Sources */,
+				BAAF6E882ABED92D00A3EC29 /* HomeViewModel.swift in Sources */,
+				BABCC27D2ABF88CC0071A0B7 /* ScrollViewExtensions.swift in Sources */,
 				BA25099E2ABE088300871222 /* CharactersRoute.swift in Sources */,
 				BA2DB6AD2ABDEA2500CB29C7 /* Marvel_Characters.xcdatamodeld in Sources */,
+				BABCC2802ABF890E0071A0B7 /* ViewOffsetPrefrenceKey.swift in Sources */,
 				BA2DB6D82ABDF3D400CB29C7 /* PaginatedResponse.swift in Sources */,
 				BA2DB6DE2ABDF6C300CB29C7 /* ThumbnailDTO.swift in Sources */,
 				BAAF6E8B2ABED9D700A3EC29 /* CharactersListViewWrapper.swift in Sources */,
@@ -648,6 +695,7 @@
 				BA2DB6AA2ABDEA2500CB29C7 /* Persistence.swift in Sources */,
 				BA2DB6A32ABDEA2400CB29C7 /* ContentView.swift in Sources */,
 				BAB0C3352ABE4CF500B21345 /* CharactersLocalSource.swift in Sources */,
+				BABCC27A2ABF84CD0071A0B7 /* ScrollCarouselView.swift in Sources */,
 				BA2509A42ABE097600871222 /* AuthenticationParametersFactory.swift in Sources */,
 				BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */,
 				BAAF6E912ABEE0B600A3EC29 /* CharacterTableViewCell.swift in Sources */,
