@@ -48,7 +48,9 @@ class CharactersListViewController: UIViewController {
         searchTextField.layer.cornerRadius = 12
     }
     private func setUpTableView() {
+        tableView.separatorStyle = .none
         tableView.dataSource = self
+        tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
     }
 }
@@ -64,5 +66,15 @@ extension CharactersListViewController: UITableViewDataSource {
         }
         viewModel.setUp(cell: cell, at: indexPath)
         return cell
+    }
+}
+
+//MARK: - UITableViewDelegate
+extension CharactersListViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didSelect(at: indexPath)
     }
 }

@@ -45,6 +45,8 @@
 		BAAF6E912ABEE0B600A3EC29 /* CharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E902ABEE0B600A3EC29 /* CharacterTableViewCell.swift */; };
 		BAAF6E942ABEE16500A3EC29 /* CharacterTableCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E932ABEE16500A3EC29 /* CharacterTableCellViewModel.swift */; };
 		BAAF6E962ABEEA1F00A3EC29 /* DefaultCodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E952ABEEA1F00A3EC29 /* DefaultCodable.swift */; };
+		BAAF6E982ABEFB2700A3EC29 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAAF6E972ABEFB2700A3EC29 /* Color.swift */; };
+		BAAF6E9B2ABF02CE00A3EC29 /* SkeletonView in Frameworks */ = {isa = PBXBuildFile; productRef = BAAF6E9A2ABF02CE00A3EC29 /* SkeletonView */; };
 		BAB0C3292ABE457100B21345 /* FetchCharactersUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C3282ABE457100B21345 /* FetchCharactersUseCase.swift */; };
 		BAB0C32C2ABE4AF600B21345 /* CharactersSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C32B2ABE4AF600B21345 /* CharactersSource.swift */; };
 		BAB0C32F2ABE4C5C00B21345 /* CharactersRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAB0C32E2ABE4C5C00B21345 /* CharactersRepository.swift */; };
@@ -110,6 +112,7 @@
 		BAAF6E902ABEE0B600A3EC29 /* CharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableViewCell.swift; sourceTree = "<group>"; };
 		BAAF6E932ABEE16500A3EC29 /* CharacterTableCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTableCellViewModel.swift; sourceTree = "<group>"; };
 		BAAF6E952ABEEA1F00A3EC29 /* DefaultCodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultCodable.swift; sourceTree = "<group>"; };
+		BAAF6E972ABEFB2700A3EC29 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		BAB0C3282ABE457100B21345 /* FetchCharactersUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchCharactersUseCase.swift; sourceTree = "<group>"; };
 		BAB0C32B2ABE4AF600B21345 /* CharactersSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSource.swift; sourceTree = "<group>"; };
 		BAB0C32E2ABE4C5C00B21345 /* CharactersRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepository.swift; sourceTree = "<group>"; };
@@ -122,6 +125,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BAAF6E9B2ABF02CE00A3EC29 /* SkeletonView in Frameworks */,
 				BA2509992ABE081500871222 /* NetworkUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +293,7 @@
 			isa = PBXGroup;
 			children = (
 				BA2DB6A42ABDEA2500CB29C7 /* Assets.xcassets */,
+				BAAF6E972ABEFB2700A3EC29 /* Color.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -476,6 +481,7 @@
 			name = "Marvel Characters";
 			packageProductDependencies = (
 				BA2509982ABE081500871222 /* NetworkUI */,
+				BAAF6E9A2ABF02CE00A3EC29 /* SkeletonView */,
 			);
 			productName = "Marvel Characters";
 			productReference = BA2DB69D2ABDEA2400CB29C7 /* Marvel Characters.app */;
@@ -551,6 +557,7 @@
 			mainGroup = BA2DB6942ABDEA2400CB29C7;
 			packageReferences = (
 				BA2509972ABE081500871222 /* XCRemoteSwiftPackageReference "NetworkUI" */,
+				BAAF6E992ABF02CE00A3EC29 /* XCRemoteSwiftPackageReference "SkeletonView" */,
 			);
 			productRefGroup = BA2DB69E2ABDEA2400CB29C7 /* Products */;
 			projectDirPath = "";
@@ -600,6 +607,7 @@
 				BAAF6E962ABEEA1F00A3EC29 /* DefaultCodable.swift in Sources */,
 				BAB0C32C2ABE4AF600B21345 /* CharactersSource.swift in Sources */,
 				BA2DB6D52ABDF2FD00CB29C7 /* ResponseContainer.swift in Sources */,
+				BAAF6E982ABEFB2700A3EC29 /* Color.swift in Sources */,
 				BA2DB6EA2ABDFCC000CB29C7 /* AdditionalLink.swift in Sources */,
 				BA2DB6E02ABDF74E00CB29C7 /* URLItemDTO.swift in Sources */,
 				BA2DB6E42ABDF9AE00CB29C7 /* Character.swift in Sources */,
@@ -965,6 +973,14 @@
 				kind = branch;
 			};
 		};
+		BAAF6E992ABF02CE00A3EC29 /* XCRemoteSwiftPackageReference "SkeletonView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Juanpe/SkeletonView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -972,6 +988,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = BA2509972ABE081500871222 /* XCRemoteSwiftPackageReference "NetworkUI" */;
 			productName = NetworkUI;
+		};
+		BAAF6E9A2ABF02CE00A3EC29 /* SkeletonView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = BAAF6E992ABF02CE00A3EC29 /* XCRemoteSwiftPackageReference "SkeletonView" */;
+			productName = SkeletonView;
 		};
 /* End XCSwiftPackageProductDependency section */
 

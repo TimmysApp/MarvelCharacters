@@ -25,6 +25,7 @@ struct CharactersListViewFactory {
         let useCase = FetchCharactersUseCase(source: repository)
         let viewModel = CharactersListViewModel(useCase: useCase)
         return CharactersListViewWrapper(viewModel: viewModel)
+            .edgesIgnoringSafeArea(.all)
     }
 }
 

@@ -53,6 +53,9 @@ import Foundation
         let viewModel = CharacterTableCellViewModel(title: character.name, description: character.description)
         cell.setUp(with: viewModel)
     }
+    func didSelect(at indexPath: IndexPath) {
+        
+    }
 }
 
 enum TableViewState {

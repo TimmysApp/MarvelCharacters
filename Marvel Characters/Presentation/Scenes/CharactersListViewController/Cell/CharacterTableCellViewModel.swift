@@ -12,3 +12,7 @@ struct CharacterTableCellViewModel {
     var title: String
     var description: String
 }
+
+protocol CharacterTableViewCellDelegate: AnyObject {
+    func didSelect(at indexPath: IndexPath)
+}
