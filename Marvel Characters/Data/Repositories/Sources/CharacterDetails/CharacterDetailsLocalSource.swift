@@ -14,7 +14,7 @@ protocol CharacterDetailsLocalSource {
     func update(using data: [CharacterContent], for characterID: Int, type: CharacterContent.ContentType) async throws
 }
 
-class CharacterDetailsDatabase {
+struct CharacterDetailsDatabase {
     let objectContext: NSManagedObjectContext
     init(objectContext: NSManagedObjectContext) {
         self.objectContext = objectContext

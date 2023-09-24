@@ -11,7 +11,7 @@ import NetworkUI
 struct FeaturedViewFactory {
     @MainActor static func assemble(for characterID: Int) -> some View {
         let detailsContentLocalSource = CharacterDetailsDatabase(objectContext: PersistenceController.shared.mainBackgroundContext())
-        let detailsContentRemoteSource = CharacterDetailsService(network: Network(configurations: NetworkConfigs()))
+        let detailsContentRemoteSource = CharacterDetailsService(network: NetworkConfigs.client)
         let detailsContentRemoteSourceGateway = CharacterDetailsRemoteSourceGateway(remoteSource: detailsContentRemoteSource, localSource: detailsContentLocalSource)
         let detailsContentRepository = CharacterDetailsContentRepository(remoteSource: detailsContentRemoteSourceGateway, localSource: detailsContentLocalSource)
         let detailsContentUseCase = CharacterDetailsContentUseCase(source: detailsContentRepository)

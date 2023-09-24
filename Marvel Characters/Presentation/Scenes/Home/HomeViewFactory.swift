@@ -12,7 +12,7 @@ struct HomeViewFactory {
     @MainActor static func assemble() -> some View {
         let objectContext = PersistenceController.shared.mainBackgroundContext()
         let photoLoader = PhotoLoader(session: .shared, objectContext: objectContext)
-        let remoteSource = CharactersService(network: Network(configurations: NetworkConfigs()))
+        let remoteSource = CharactersService(network: NetworkConfigs.client)
         let localSource = CharactersDatabase(objectContext: objectContext)
         let remoteSourceGateway = CharactersRemoteSourceGateway(remoteSource: remoteSource, localSource: localSource)
         let repository = CharactersRepository(remoteSource: remoteSourceGateway, localSource: localSource)
