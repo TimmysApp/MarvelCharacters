@@ -29,11 +29,13 @@ extension CharacterDetailsDatabase: CharacterDetailsLocalSource {
     }
     func update(using data: [CharacterContent], for characterID: Int, type: CharacterContent.ContentType) async throws {
         let oldData = try await fetch(for: characterID, type: type)
-        oldData.forEach { character in
-            character.delete(objectContext)
-        }
-        data.forEach { character in
-            character.save(objectContext)
+        objectContext.performAndWait {
+            oldData.forEach { character in
+                character.delete(objectContext)
+            }
+            data.forEach { character in
+                character.save(objectContext)
+            }
         }
     }
 }

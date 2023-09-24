@@ -25,7 +25,6 @@ final class CharacterDatabaseTests: XCTestCase {
         do {
             let characters = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
             try await source.update(using: characters)
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             let fetchedData = try await source.fetch()
             XCTAssertEqual(fetchedData, characters)
         }catch {
@@ -37,9 +36,7 @@ final class CharacterDatabaseTests: XCTestCase {
         let newCharacters = CharacterEntityMockFactory.assembleCharacters(offset: 10, limit: 5)
         do {
             try await source.update(using: oldCharacters)
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             try await source.update(using:  newCharacters)
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             let fetchedData = try await source.fetch()
             XCTAssertEqual(fetchedData, newCharacters)
         }catch {

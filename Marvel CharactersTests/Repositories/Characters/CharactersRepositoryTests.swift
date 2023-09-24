@@ -82,7 +82,6 @@ final class CharactersRepositoryTests: XCTestCase {
         let repository = assembleRepositoryWithDatabase(remoteResult: .success(expectedRemoteData))
         do {
             let result = try await repository.fetch(using: CharactersParameters(offset: 0))
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             let localData = try await repository.localSource.fetch()
             XCTAssertEqual(localData, result)
         }catch {
@@ -94,7 +93,6 @@ final class CharactersRepositoryTests: XCTestCase {
         let repository = assembleRepositoryWithDatabase(remoteResult: .success(expectedRemoteData))
         do {
             let result = try await repository.fetch(using: CharactersParameters(offset: 1))
-            try? await Task.sleep(nanoseconds: 1_000_000_000)
             let localData = try await repository.localSource.fetch()
             XCTAssertEqual(localData, [])
         }catch {
