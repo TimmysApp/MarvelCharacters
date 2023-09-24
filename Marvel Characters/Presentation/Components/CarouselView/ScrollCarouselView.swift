@@ -58,12 +58,13 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
                                 Color.clear
                                     .frame(width: spacing)
                                 content(item)
+                                    .contentShape(Rectangle())
+                                    .onTapGesture {
+                                        onSelection?(item)
+                                        tapSelection = item
+                                        select(item, reader: scrollReader)
+                                    }
                             }.id(item)
-                            .onTapGesture {
-                                onSelection?(item)
-                                tapSelection = item
-                                select(item, reader: scrollReader)
-                            }
                         }
                         Color.clear
                             .frame(width: padding)
