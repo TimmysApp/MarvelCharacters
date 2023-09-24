@@ -13,7 +13,3 @@ struct CharacterTableCellViewModel {
     var description: String
     var loader: PhotoLoader?
 }
-
-protocol CharacterTableViewCellDelegate: AnyObject {
-    func didSelect(at indexPath: IndexPath)
-}

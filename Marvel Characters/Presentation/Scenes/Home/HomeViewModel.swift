@@ -9,7 +9,8 @@ import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
 //MARK: - Publishers
-    @Published var selectedCharacter: CharacterDisplayStyle?
+    @Published var navigationPath = [Character]()
+    @Published var displayedCharacterStyle: CharacterDisplayStyle?
     @Published var displayStyle = HomeDisplayStyle.list
     @Published var state = TableViewState.loading
     @Published var characters = [CharacterDisplayStyle]()
@@ -20,6 +21,9 @@ import Foundation
     private let limit = 15
     private let useCase: FetchCharactersUseCase
     private(set) var count = 1
+    var displayedCharacter: Character? {
+        return displayedCharacterStyle?.get()
+    }
 //MARK: - Initializer
     init(useCase: FetchCharactersUseCase, loader: PhotoLoader) {
         self.useCase = useCase
@@ -50,7 +54,7 @@ import Foundation
     }
     private func addPaginationState() {
         guard characters.last != .pagination else {return}
-        selectedCharacter = characters.last
+        displayedCharacterStyle = characters.last
         characters.append(.pagination)
     }
 //MARK: - View Functions
@@ -58,7 +62,7 @@ import Foundation
         state = .loading
         await loadCharacters()
         addPaginationState()
-        selectedCharacter = characters.first
+        displayedCharacterStyle = characters.first
     }
     func paginate() async {
         await loadCharacters()
@@ -69,7 +73,8 @@ import Foundation
         cell.setUp(with: viewModel)
     }
     func didSelect(at indexPath: IndexPath) {
-        
+        guard let character = characters[indexPath.row].get() else {return}
+        navigationPath.append(character)
     }
     func isPaginationCell(_ indexPath: IndexPath) -> Bool {
         return indexPath.row == count - 1

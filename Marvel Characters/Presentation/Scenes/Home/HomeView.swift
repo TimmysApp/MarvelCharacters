@@ -10,19 +10,22 @@ import SwiftUI
 struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     var body: some View {
-        ZStack {
-            switch viewModel.displayStyle {
-                case .carousel:
-                    DicoverView(viewModel: viewModel)
-                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
-                case .list:
-                    CharactersListViewWrapper(viewModel: viewModel)
-                        .edgesIgnoringSafeArea(.all)
-                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+        NavigationStack(path: $viewModel.navigationPath) {
+            Group {
+                switch viewModel.displayStyle {
+                    case .carousel:
+                        DicoverView(viewModel: viewModel)
+                    case .list:
+                        CharactersListViewWrapper(viewModel: viewModel)
+                            .edgesIgnoringSafeArea(.all)
+                }
+            }.transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            .toolbar(.hidden, for: .navigationBar)
+            .navigationDestination(for: Character.self) { character in
+                Text("")
             }
-        }
-        .task {
+        }.task {
             await viewModel.load()
-        }.animation(.spring(), value: viewModel.displayStyle)
+        }.animation(.easeIn, value: viewModel.displayStyle)
     }
 }

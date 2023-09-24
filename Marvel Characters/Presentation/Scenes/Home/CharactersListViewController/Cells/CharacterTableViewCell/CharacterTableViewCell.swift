@@ -10,8 +10,6 @@ import SkeletonView
 
 class CharacterTableViewCell: UITableViewCell {
 //MARK: - Properties
-    var indexPath: IndexPath?
-    weak var delegate: CharacterTableViewCellDelegate?
     static let identifier = "CharacterTableViewCell"
 //MARK: - Views
     private lazy var titlesContainerView: UIView = {
