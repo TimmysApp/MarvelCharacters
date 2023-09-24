@@ -21,11 +21,18 @@ struct FeaturedTypeView: View {
                 .fontWeight(.semibold)
                 .foregroundStyle(Color.text)
                 .frame(maxWidth: .infinity, alignment: .leading)
-            HStack(spacing: spacing) {
+            HStack(alignment: .top, spacing: spacing) {
                 ForEach(content.content) { item in
-                    RemotePhotoView(url: item.thumbnailURL)
-                        .frame(width: width, height: width * 1.5)
-                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                    VStack {
+                        RemotePhotoView(url: item.thumbnailURL)
+                            .frame(width: width, height: width * 1.5)
+                            .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                        Text(item.title)
+                            .font(.callout)
+                            .fontWeight(.medium)
+                            .foregroundStyle(Color.text)
+                            .multilineTextAlignment(.center)
+                    }.frame(width: width)
                 }
             }
         }
