@@ -13,6 +13,7 @@ class CharactersListViewController: UIViewController {
 //MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var stateLable: UILabel!
 //MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: HomeViewModel
@@ -48,6 +49,13 @@ class CharactersListViewController: UIViewController {
                 self?.update(state: state)
             }.store(in: &cancellables)
     }
+    private func updateTileFont(offset: CGFloat) {
+        let baseFontSize: CGFloat = 34
+        let percentage = (1 + offset/200)
+        let newRawFontSize = percentage * baseFontSize
+        let newFontSize = max(min(newRawFontSize, 40), 24)
+        titleLabel.font = .systemFont(ofSize: newFontSize, weight: .bold)
+    }
     private func setUpTableView() {
         tableView.separatorStyle = .none
         tableView.dataSource = self
@@ -58,12 +66,16 @@ class CharactersListViewController: UIViewController {
     private func update(state: TableViewState) {
         switch state {
             case .empty:
-                break
+                stateLable.text = "No Characters Available!"
+                tableView.isHidden = true
             case .error(let string):
-                break
+                stateLable.text = string
+                tableView.isHidden = true
             case .loading:
+                tableView.isHidden = false
                 tableView.showAnimatedGradientSkeleton()
             case .loaded:
+                tableView.isHidden = false
                 tableView.hideSkeleton()
         }
     }
@@ -111,5 +123,13 @@ extension CharactersListViewController: SkeletonTableViewDataSource {
     }
     func collectionSkeletonView(_ skeletonView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
+    }
+}
+
+//MARK: - UIScrollViewDelegate
+extension CharactersListViewController: UIScrollViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let offset = scrollView.contentOffset.y
+        updateTileFont(offset: -offset)
     }
 }

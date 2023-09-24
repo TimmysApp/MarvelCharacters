@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CharactersListViewController" customModule="Marvel_Characters" customModuleProvider="target">
             <connections>
+                <outlet property="stateLable" destination="e6O-Bq-HJs" id="GhY-z1-FJg"/>
                 <outlet property="tableView" destination="bax-wE-hkP" id="ujj-Pw-IM2"/>
                 <outlet property="titleLabel" destination="oXx-jF-muj" id="pbf-dQ-8lU"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -23,10 +24,16 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oXx-jF-muj">
                     <rect key="frame" x="15" y="69" width="87" height="40"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="40" id="C1b-JO-S0Q"/>
+                        <constraint firstAttribute="height" relation="lessThanOrEqual" constant="40" id="Jmj-5M-Tfg"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="34"/>
                     <color key="textColor" name="Text"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e6O-Bq-HJs">
+                    <rect key="frame" x="20" y="414" width="353" height="24"/>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                    <color key="textColor" name="SecondaryText"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="bax-wE-hkP">
@@ -36,11 +43,8 @@
                         <userDefinedRuntimeAttribute type="boolean" keyPath="isSkeletonable" value="YES"/>
                     </userDefinedRuntimeAttributes>
                 </tableView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qt-kd-7nq">
-                    <rect key="frame" x="352" y="69" width="26" height="40"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="40" id="oFU-Uc-34O"/>
-                    </constraints>
+                <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="1000" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qt-kd-7nq">
+                    <rect key="frame" x="352" y="78" width="26" height="22"/>
                     <color key="tintColor" name="Text"/>
                     <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                     <state key="normal" image="slider.horizontal.below.square.filled.and.square" catalog="system">
@@ -56,10 +60,13 @@
             <constraints>
                 <constraint firstItem="bax-wE-hkP" firstAttribute="top" secondItem="oXx-jF-muj" secondAttribute="bottom" constant="10" id="0XA-24-21d"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="1qt-kd-7nq" secondAttribute="trailing" constant="15" id="4JW-gi-OxS"/>
+                <constraint firstItem="e6O-Bq-HJs" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="Bra-14-Xwy"/>
                 <constraint firstItem="oXx-jF-muj" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="10" id="FM7-ip-IMH"/>
                 <constraint firstItem="bax-wE-hkP" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="R8F-RC-DCc"/>
+                <constraint firstItem="e6O-Bq-HJs" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="VBf-cb-PWV"/>
                 <constraint firstItem="1qt-kd-7nq" firstAttribute="centerY" secondItem="oXx-jF-muj" secondAttribute="centerY" id="bzD-bt-G32"/>
                 <constraint firstItem="oXx-jF-muj" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="15" id="ecX-A4-NtH"/>
+                <constraint firstItem="e6O-Bq-HJs" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="mac-wD-1lv"/>
                 <constraint firstItem="bax-wE-hkP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qBP-Zd-zrX"/>
                 <constraint firstItem="1qt-kd-7nq" firstAttribute="top" relation="greaterThanOrEqual" secondItem="fnl-2z-Ty3" secondAttribute="top" id="s4a-fL-fLY"/>
                 <constraint firstItem="1qt-kd-7nq" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="oXx-jF-muj" secondAttribute="trailing" id="w2D-m7-2lE"/>
@@ -72,6 +79,9 @@
         <image name="slider.horizontal.below.square.filled.and.square" catalog="system" width="128" height="91"/>
         <namedColor name="Background">
             <color red="0.8666666666666667" green="0.8666666666666667" blue="0.8901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="SecondaryText">
+            <color red="0.49019607843137253" green="0.52156862745098043" blue="0.59215686274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
         <namedColor name="Text">
             <color red="0.0" green="0.054999999701976776" blue="0.16099999845027924" alpha="0.69999998807907104" colorSpace="custom" customColorSpace="sRGB"/>
