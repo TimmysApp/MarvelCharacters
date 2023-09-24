@@ -11,6 +11,7 @@ struct CharacterTableCellViewModel {
     var imageURL: URL?
     var title: String
     var description: String
+    var loader: PhotoLoader?
 }
 
 protocol CharacterTableViewCellDelegate: AnyObject {
