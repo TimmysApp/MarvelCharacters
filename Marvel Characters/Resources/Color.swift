@@ -14,3 +14,11 @@ extension UIColor {
     static let border = UIColor(named: "Border")!
     static let cellBackground = UIColor(named: "CellBackground")!
 }
+
+extension Color {
+    static let text = Color("Text")
+    static let background = Color("Background")
+    static let secondaryText = Color("SecondaryText")
+    static let border = Color("Border")
+    static let cellBackground = Color("CellBackground")
+}

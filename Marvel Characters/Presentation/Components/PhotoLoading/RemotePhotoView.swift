@@ -12,6 +12,7 @@ struct RemotePhotoView: View {
     @State private var image: UIImage?
     @State private var loading = true
     let url: URL?
+    var contentMode = ContentMode.fill
     var body: some View {
         if loading {
             ProgressView()
@@ -28,7 +29,7 @@ struct RemotePhotoView: View {
             if let image {
                 Image(uiImage: image)
                     .resizable()
-                    .aspectRatio(contentMode: .fill)
+                    .aspectRatio(contentMode: contentMode)
             }else {
                 Text("Error")
             }

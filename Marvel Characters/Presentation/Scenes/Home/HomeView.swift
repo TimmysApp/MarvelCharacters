@@ -23,7 +23,7 @@ struct HomeView: View {
             .animation(.spring(), value: viewModel.displayStyle)
             .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(for: Character.self) { character in
-                Text("")
+                CharacterDetailView(character: character)
             }
         }.task {
             await viewModel.load()
