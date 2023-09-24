@@ -9,13 +9,13 @@ import Foundation
 import NetworkUI
 
 enum CharactersRoute: Route {
-    case characters(parameters: CharactersParameters), comics(characterID: Int), events(characterID: Int), stories(characterID: Int), series(characterID: Int)
+    case characters(parameters: CharactersParameters), details(characterID: Int, type: CharacterContent.ContentType)
     var route: URLRoute {
         let authenticationParameters = AuthenticationParametersFactory.assemble()
         return URLRoute(from: "characters")
             .appending {
                 switch self {
-                    case .comics(let characterID), .events(let characterID), .stories(let characterID), .series(let characterID):
+                    case .details(let characterID, _):
                         return String(characterID)
                     default:
                         return nil
@@ -24,14 +24,8 @@ enum CharactersRoute: Route {
                 switch self {
                     case .characters(let parameters):
                         return parameters
-                    case .comics:
-                        return "comics"
-                    case .events:
-                        return "events"
-                    case .stories:
-                        return "stories"
-                    case .series:
-                        return "series"
+                    case .details(_, let type):
+                        return CharacterDetailsRouteFactory.assemble(for: type)
                 }
             }.appending(authenticationParameters)
     }
