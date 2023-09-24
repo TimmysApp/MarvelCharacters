@@ -40,13 +40,15 @@ import Foundation
         }
     }
     private func update(with data: [Character]) {
+        let newDataCount = data.count
+        _ = characters.popLast()
         if count == 1 {
             state = .loaded
+            characters = data.map({CharacterDisplayStyle.info($0)})
+        }else {
+            characters.append(contentsOf: data.map({CharacterDisplayStyle.info($0)}))
         }
-        let newDataCount = data.count
         count += newDataCount
-        _ = characters.popLast()
-        characters.append(contentsOf: data.map({CharacterDisplayStyle.info($0)}))
         addPaginationState()
         reloadTableView?()
     }
@@ -61,6 +63,12 @@ import Foundation
         await loadCharacters()
         addPaginationState()
         displayedCharacterStyle = characters.first
+    }
+    func refresh() {
+        Task {
+            count = 1
+            await loadCharacters()
+        }
     }
     func paginate() async {
         await loadCharacters()

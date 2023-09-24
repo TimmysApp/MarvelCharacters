@@ -15,6 +15,7 @@ class CharactersListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var stateLable: UILabel!
 //MARK: - Properties
+    private let refreshControl = UIRefreshControl()
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: HomeViewModel
 //MARK: - Initializer
@@ -34,6 +35,9 @@ class CharactersListViewController: UIViewController {
     @IBAction func carouselButtonTapped(_ sender: Any) {
         viewModel.switchStyle(to: .carousel)
     }
+    @objc private func refreshContent() {
+        viewModel.refresh()
+    }
 //MARK: - Functions
     private func setUp() {
         titleLabel.text = "Marvel Characters!"
@@ -43,6 +47,7 @@ class CharactersListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.reloadTableView = { [weak self] in
             self?.tableView.reloadData()
+            self?.refreshControl.endRefreshing()
         }
         viewModel.$state
             .sink { [weak self] state in
@@ -57,6 +62,8 @@ class CharactersListViewController: UIViewController {
         titleLabel.font = .systemFont(ofSize: newFontSize, weight: .bold)
     }
     private func setUpTableView() {
+        refreshControl.addTarget(self, action: #selector(refreshContent), for: .valueChanged)
+        tableView.refreshControl = refreshControl
         tableView.separatorStyle = .none
         tableView.dataSource = self
         tableView.delegate = self
@@ -78,6 +85,7 @@ class CharactersListViewController: UIViewController {
                 tableView.isHidden = false
                 tableView.hideSkeleton()
         }
+        stateLable.isHidden = !tableView.isHidden
     }
 }
 
