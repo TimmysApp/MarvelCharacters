@@ -12,6 +12,7 @@ struct Marvel_CharactersApp: App {
     var body: some Scene {
         WindowGroup {
             HomeViewFactory.assemble()
+                .sizeListener()
         }
     }
 }

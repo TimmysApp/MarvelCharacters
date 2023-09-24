@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct DicoverView: View {
+    @Environment(\.screenSize) private var screenSize
     @ObservedObject var viewModel: HomeViewModel
-    @State private var width: CGFloat = 10
     private let spacing: CGFloat = 15
     private var itemWidth: CGFloat {
-        return (width - (3 * spacing)) / 2.5
+        return (screenSize.width - (3 * spacing)) / 2.5
     }
     var body: some View {
         VStack(alignment: .leading, spacing: 15) {
@@ -35,15 +35,13 @@ struct DicoverView: View {
                     .fontWeight(.medium)
                 Spacer()
             }.foregroundStyle(Material.ultraThickMaterial.blendMode(.luminosity).opacity(0.8).shadow(.drop(radius: 10)))
-            .padding(.horizontal, 15)
             .background {
                 if viewModel.displayedCharacterStyle == .pagination {
                     progressView
-                        .frame(width: width)
+                        .frame(width: screenSize.width)
                 }else {
                     RemotePhotoView(url: viewModel.displayedCharacter?.thumbnailURL)
-                        .frame(width: width)
-                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .frame(width: screenSize.width)
                         .overlay(Color.black.opacity(0.4))
                         .id(viewModel.displayedCharacter?.thumbnailURL)
                         .edgesIgnoringSafeArea(.top)
@@ -52,7 +50,7 @@ struct DicoverView: View {
                                 .frame(height: 50)
                         }
                 }
-            }
+            }.padding(.horizontal, 15)
             Text("Marvel Characters")
                 .foregroundColor(.white)
                 .padding(.horizontal, spacing)
@@ -77,14 +75,6 @@ struct DicoverView: View {
                 }.frame(height: itemWidth * 1.5)
             }
         }.background(Color.black)
-        .background {
-            GeometryReader { proxy in
-                Color.clear
-                    .onAppear {
-                        width = proxy.size.width
-                    }
-            }
-        }
     }
     private var progressView: some View {
         ProgressView()

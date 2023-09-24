@@ -20,12 +20,13 @@ struct HomeView: View {
                             .edgesIgnoringSafeArea(.all)
                 }
             }.transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            .animation(.spring(), value: viewModel.displayStyle)
             .toolbar(.hidden, for: .navigationBar)
             .navigationDestination(for: Character.self) { character in
                 Text("")
             }
         }.task {
             await viewModel.load()
-        }.animation(.easeIn, value: viewModel.displayStyle)
+        }
     }
 }
