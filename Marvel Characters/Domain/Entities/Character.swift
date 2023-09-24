@@ -19,7 +19,7 @@ struct Character: CollectionElement {
         guard let thumbnailPath else {
             return nil
         }
-        return URL(string: thumbnailPath)
+        return URL(string: thumbnailPath.replacingOccurrences(of: "http", with: "https"))
     }
     var additionalLinks: [AdditionalLink]
     static let modelData = ModelData<Character>()
