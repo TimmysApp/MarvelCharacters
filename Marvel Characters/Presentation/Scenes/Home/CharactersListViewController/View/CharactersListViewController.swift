@@ -35,6 +35,10 @@ class CharactersListViewController: UIViewController {
         super.viewDidLayoutSubviews()
         setUpLayers()
     }
+//MARK: - Actions
+    @IBAction func carouselButtonTapped(_ sender: Any) {
+        viewModel.switchStyle(to: .carousel)
+    }
 //MARK: - Functions
     private func setUp() {
         titleLabel.text = "Marvel Characters!"

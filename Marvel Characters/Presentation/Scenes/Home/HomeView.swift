@@ -11,13 +11,18 @@ struct HomeView: View {
     @StateObject var viewModel: HomeViewModel
     var body: some View {
         ZStack {
-            CharactersListViewWrapper(viewModel: viewModel)
-                .edgesIgnoringSafeArea(.all)
-                .opacity(viewModel.displayStyle == .list ? 1: 0)
-            DicoverView(viewModel: viewModel)
-                .opacity(viewModel.displayStyle == .carousel ? 1: 0)
-        }.task {
-            await viewModel.load()
+            switch viewModel.displayStyle {
+                case .carousel:
+                    DicoverView(viewModel: viewModel)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+                case .list:
+                    CharactersListViewWrapper(viewModel: viewModel)
+                        .edgesIgnoringSafeArea(.all)
+                        .transition(.asymmetric(insertion: .move(edge: .trailing), removal: .move(edge: .leading)))
+            }
         }
+        .task {
+            await viewModel.load()
+        }.animation(.spring(), value: viewModel.displayStyle)
     }
 }

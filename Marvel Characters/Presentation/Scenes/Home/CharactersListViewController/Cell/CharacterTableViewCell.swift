@@ -58,8 +58,8 @@ class CharacterTableViewCell: UITableViewCell {
         stackView.translatesAutoresizingMaskIntoConstraints = false
         return stackView
     }()
-    private lazy var characterImageView: UIImageView = {
-        let imageView = UIImageView()
+    private lazy var characterImageView: RemoteImageView = {
+        let imageView = RemoteImageView()
         imageView.isSkeletonable = true
         imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -98,8 +98,6 @@ class CharacterTableViewCell: UITableViewCell {
         containerStackView.addArrangedSubview(characterImageView)
         containerStackView.addArrangedSubview(titlesContainerView)
         
-        characterImageView.image = UIImage(named: "test")
-        
         titlesContainerView.addSubview(titlesStackView)
         
         containerView.addSubview(containerStackView)
@@ -136,5 +134,7 @@ class CharacterTableViewCell: UITableViewCell {
     func setUp(with viewModel: CharacterTableCellViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
+        characterImageView.loader = viewModel.loader
+        characterImageView.url = viewModel.imageURL
     }
 }

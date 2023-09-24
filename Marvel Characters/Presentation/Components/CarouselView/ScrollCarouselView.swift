@@ -52,7 +52,7 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
             let padding = abs(reader.frame(in: .global).width - (spacing + width))
             ScrollViewReader { scrollReader in
                 ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(alignment: alignment, spacing: 0) {
+                    LazyHStack(alignment: alignment, spacing: 0) {
                         ForEach(data) { item in
                             HStack(spacing: 0) {
                                 Color.clear
