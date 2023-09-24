@@ -15,11 +15,11 @@ struct AdditionalLink: CollectionElement {
     var url: URL? {
         return URL(string: path)
     }
-    static let modelData = ModelData<AdditionalLink>()
 }
 
 //MARK: - Datable
 extension AdditionalLink: Datable {
+    static let modelData = ModelData<AdditionalLink>()
     static func map(from object: AdditionalLinkData?) -> AdditionalLink? {
         guard let object else {
             return nil

@@ -22,11 +22,11 @@ struct Character: CollectionElement {
         return URL(string: thumbnailPath.replacingOccurrences(of: "http", with: "https"))
     }
     var additionalLinks: [AdditionalLink]
-    static let modelData = ModelData<Character>()
 }
 
 //MARK: - Datable
 extension Character: Datable {
+    static let modelData = ModelData<Character>()
     static var dataKeys = ["description": "characterDescription"]
     static func map(from object: CharacterData?) -> Character? {
         guard let object else {

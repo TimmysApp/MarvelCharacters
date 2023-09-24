@@ -12,11 +12,11 @@ struct PhotoCache {
     var id: UUID? = UUID()
     var url: String
     var data: Data?
-    static let modelData = ModelData<PhotoCache>()
 }
 
 //MARK: - Datable
 extension PhotoCache: Datable {
+    static let modelData = ModelData<PhotoCache>()
     static func map(from object: PhotoData?) -> PhotoCache? {
         guard let object else {
             return nil
