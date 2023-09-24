@@ -11,7 +11,7 @@ import SwiftUI
 struct Marvel_CharactersApp: App {
     var body: some Scene {
         WindowGroup {
-            CharactersListViewFactory.assemble()
+            HomeViewFactory.assemble()
         }
     }
 }

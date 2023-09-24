@@ -9,6 +9,14 @@ import Foundation
 
 enum TableViewState {
     case empty, error(String), loading, loaded
+    var loaded: Bool {
+        switch self {
+            case .loaded:
+                return true
+            default:
+                return false
+        }
+    }
 }
 
 enum HomeDisplayStyle {

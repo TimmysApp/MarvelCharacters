@@ -19,7 +19,7 @@ import Foundation
     private let loader: PhotoLoader
     private let limit = 15
     private let useCase: FetchCharactersUseCase
-    private(set) var count = 0
+    private(set) var count = 1
 //MARK: - Initializer
     init(useCase: FetchCharactersUseCase, loader: PhotoLoader) {
         self.useCase = useCase
@@ -27,7 +27,8 @@ import Foundation
     }
 //MARK: - Functions
     private func loadCharacters() async {
-        let prameters = CharactersParameters(limit: limit, offset: count)
+        let offset = count - 1
+        let prameters = CharactersParameters(limit: limit, offset: offset)
         do {
             let result = try await useCase.fetch(using: prameters)
             update(with: result)
@@ -37,7 +38,7 @@ import Foundation
         }
     }
     private func update(with data: [Character]) {
-        if count == 0 {
+        if count == 1 {
             state = .loaded
         }
         let newDataCount = data.count
@@ -69,6 +70,15 @@ import Foundation
     }
     func didSelect(at indexPath: IndexPath) {
         
+    }
+    func isPaginationCell(_ indexPath: IndexPath) -> Bool {
+        return indexPath.row == count - 1
+    }
+    func willDisplayCell(at indexPath: IndexPath) {
+        guard state.loaded, isPaginationCell(indexPath) else {return}
+        Task {
+            await paginate()
+        }
     }
     func switchStyle(to style: HomeDisplayStyle) {
         displayStyle = style

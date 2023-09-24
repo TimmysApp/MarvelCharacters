@@ -66,6 +66,7 @@ class CharactersListViewController: UIViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
+        tableView.register(PaginationLoadingTableViewCell.self, forCellReuseIdentifier: PaginationLoadingTableViewCell.identifier)
     }
     private func update(state: TableViewState) {
         switch state {
@@ -87,8 +88,16 @@ extension CharactersListViewController: UITableViewDataSource {
         return viewModel.count
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if viewModel.isPaginationCell(indexPath) {
+            guard  let cell = tableView.dequeueReusableCell(withIdentifier: PaginationLoadingTableViewCell
+                .identifier, for: indexPath) as? PaginationLoadingTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.startAnimating()
+            return cell
+        }
         guard let cell = tableView.dequeueReusableCell(withIdentifier: CharacterTableViewCell.identifier, for: indexPath) as? CharacterTableViewCell else {
-            fatalError()
+            return UITableViewCell()
         }
         viewModel.setUp(cell: cell, at: indexPath)
         return cell
@@ -102,6 +111,9 @@ extension CharactersListViewController: UITableViewDelegate {
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         viewModel.didSelect(at: indexPath)
+    }
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        viewModel.willDisplayCell(at: indexPath)
     }
 }
 
