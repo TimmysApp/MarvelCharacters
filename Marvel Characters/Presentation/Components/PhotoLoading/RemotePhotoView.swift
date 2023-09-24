@@ -16,6 +16,7 @@ struct RemotePhotoView: View {
     var body: some View {
         if loading {
             ProgressView()
+                .background(Material.ultraThin)
                 .task {
                     guard let url else {
                         loading = false

@@ -5,24 +5,29 @@
 //  Created by Joe Maghzal on 24/09/2023.
 //
 
-import UIKit
+import SwiftUI
 
-class RemoteImageView: UIImageView {
+class RemoteImageView: UIView {
 //MARK: - Properties
-    var loader: PhotoLoader?
     var url: URL? {
         didSet {
-            Task {
-                await loadImage()
-            }
+            loadImage()
         }
     }
 //MARK: - Functions
-    private func loadImage() async {
-        guard let url else {
-            return
-        }
-        let fetchedImage = await loader?.loadImage(for: url)
-        image = fetchedImage
+    private func loadImage() {
+        let hostingController = UIHostingController(rootView: RemotePhotoView(url: url))
+        guard let hostingView = hostingController.view else {return}
+        hostingView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(hostingView)
+        setUpConstraints(hostingView)
+    }
+    private func setUpConstraints(_ hostingView: UIView) {
+        NSLayoutConstraint.activate([
+            hostingView.topAnchor.constraint(equalTo: topAnchor),
+            hostingView.leadingAnchor.constraint(equalTo: leadingAnchor),
+            hostingView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            hostingView.centerYAnchor.constraint(equalTo: centerYAnchor)
+        ])
     }
 }

@@ -59,7 +59,7 @@ class CharacterTableViewCell: UITableViewCell {
     private lazy var characterImageView: RemoteImageView = {
         let imageView = RemoteImageView()
         imageView.isSkeletonable = true
-        imageView.contentMode = .scaleAspectFill
+//        imageView.contentMode = .scaleAspectFill
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
@@ -132,7 +132,6 @@ class CharacterTableViewCell: UITableViewCell {
     func setUp(with viewModel: CharacterTableCellViewModel) {
         titleLabel.text = viewModel.title
         descriptionLabel.text = viewModel.description
-        characterImageView.loader = viewModel.loader
         characterImageView.url = viewModel.imageURL
     }
 }

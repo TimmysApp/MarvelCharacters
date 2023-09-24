@@ -17,7 +17,6 @@ import Foundation
 //MARK: - Closures
     var reloadTableView: (() -> Void)?
 //MARK: - Properties
-    private let loader: PhotoLoader
     private let limit = 15
     private let useCase: FetchCharactersUseCase
     private(set) var count = 1
@@ -25,9 +24,8 @@ import Foundation
         return displayedCharacterStyle?.get()
     }
 //MARK: - Initializer
-    init(useCase: FetchCharactersUseCase, loader: PhotoLoader) {
+    init(useCase: FetchCharactersUseCase) {
         self.useCase = useCase
-        self.loader = loader
     }
 //MARK: - Functions
     private func loadCharacters() async {
@@ -69,7 +67,7 @@ import Foundation
     }
     func setUp(cell: CharacterTableViewCell, at indexPath: IndexPath) {
         guard let character = characters[indexPath.row].get() else {return}
-        let viewModel = CharacterTableCellViewModel(imageURL: character.thumbnailURL, title: character.name, description: character.description, loader: loader)
+        let viewModel = CharacterTableCellViewModel(imageURL: character.thumbnailURL, title: character.name, description: character.description)
         cell.setUp(with: viewModel)
     }
     func didSelect(at indexPath: IndexPath) {

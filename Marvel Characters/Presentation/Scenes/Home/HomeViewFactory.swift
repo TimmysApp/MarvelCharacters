@@ -17,7 +17,7 @@ struct HomeViewFactory {
         let remoteSourceGateway = CharactersRemoteSourceGateway(remoteSource: remoteSource, localSource: localSource)
         let repository = CharactersRepository(remoteSource: remoteSourceGateway, localSource: localSource)
         let useCase = FetchCharactersUseCase(source: repository)
-        let viewModel = HomeViewModel(useCase: useCase, loader: photoLoader)
+        let viewModel = HomeViewModel(useCase: useCase)
         return HomeView(viewModel: viewModel)
             .environmentObject(photoLoader)
     }
