@@ -9,6 +9,8 @@ import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
 //MARK: - Publishers
+    @Published var selectedCharacter: Character?
+    @Published var displayStyle = HomeDisplayStyle.carousel
     @Published var state = TableViewState.loading
     @Published var characters = [Character]()
 //MARK: - Closures
@@ -42,11 +44,9 @@ import Foundation
         reloadTableView?()
     }
 //MARK: - View Functions
-    func load() {
+    func load() async {
         state = .loading
-        Task {
-            await loadCharacters()
-        }
+        await loadCharacters()
     }
     func setUp(cell: CharacterTableViewCell, at indexPath: IndexPath) {
         let character = characters[indexPath.row]
@@ -60,4 +60,8 @@ import Foundation
 
 enum TableViewState {
     case empty, error(String), loading, loaded
+}
+
+enum HomeDisplayStyle {
+    case list, carousel
 }

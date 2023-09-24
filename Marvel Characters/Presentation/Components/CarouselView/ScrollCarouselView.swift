@@ -9,8 +9,9 @@ import SwiftUI
 
 public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: View {
 //MARK: - Properties
+    @State private var tapSelection: ID?
     @State private var appeared = false
-    @Binding private var selection: ID
+    @Binding private var selection: ID?
     private let width: CGFloat
     private let data: [ID]
     private let spacing: CGFloat
@@ -21,7 +22,7 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
     private let selectionMap: ((ID) -> ID?)?
     private let scrollChange: ((Bool) -> Void)?
 //MARK: - Initializers
-    public init(_ data: [ID], selection: Binding<ID>, width: CGFloat, alignment: VerticalAlignment = .center, spacing: CGFloat, @ViewBuilder content: @escaping (ID) -> Content) {
+    public init(_ data: [ID], selection: Binding<ID?>, width: CGFloat, alignment: VerticalAlignment = .center, spacing: CGFloat, @ViewBuilder content: @escaping (ID) -> Content) {
         self.data = data
         self._selection = selection
         self.width = width
@@ -33,7 +34,7 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
         self.selectionMap = nil
         self.scrollChange = nil
     }
-    private init(_ data: [ID], selection: Binding<ID>, width: CGFloat, alignment: VerticalAlignment, spacing: CGFloat, @ViewBuilder content: @escaping (ID) -> Content, onSelection: ((ID) -> Void)?, shouldSelect: ((ID) -> Bool)?, selectionMap: ((ID) -> ID?)?, scrollChange: ((Bool) -> Void)?) {
+    private init(_ data: [ID], selection: Binding<ID?>, width: CGFloat, alignment: VerticalAlignment, spacing: CGFloat, @ViewBuilder content: @escaping (ID) -> Content, onSelection: ((ID) -> Void)?, shouldSelect: ((ID) -> Bool)?, selectionMap: ((ID) -> ID?)?, scrollChange: ((Bool) -> Void)?) {
         self.data = data
         self._selection = selection
         self.width = width
@@ -60,6 +61,7 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
                             }.id(item)
                             .onTapGesture {
                                 onSelection?(item)
+                                tapSelection = item
                                 select(item, reader: scrollReader)
                             }
                         }
@@ -83,8 +85,12 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
                             let generator = UISelectionFeedbackGenerator()
                             generator.selectionChanged()
                         }
-                        selection = data[approximateIndex]
-                    }.onScrollEnd { newValue in
+                        let newSelection = data[approximateIndex]
+                        if tapSelection == newSelection || tapSelection == nil {
+                            selection = newSelection
+                            tapSelection = nil
+                        }
+                    }.onScrollEnd { _ in
                         select(selection, reader: scrollReader)
                     }
                 }.coordinateSpace(name: "scroll")
@@ -92,9 +98,9 @@ public struct ScrollCarouselView<ID: Hashable & Identifiable, Content: View>: Vi
         }
     }
 //MARK: - Functions
-    private func select(_ item: ID, reader: ScrollViewProxy) {
-        guard shouldSelect?(item) ?? true else {return}
-        selection = selectionMap?(item) ?? item
+    private func select(_ item: ID?, reader: ScrollViewProxy) {
+        guard let selectionItem = item ?? data.first, shouldSelect?(selectionItem) ?? true else {return}
+        selection = selectionMap?(selectionItem) ?? item
         withAnimation(.easeIn) {
             reader.scrollTo(selection, anchor: .leading)
         }
@@ -122,7 +128,7 @@ struct ScrollCarouselView_Previews: PreviewProvider {
 
 fileprivate struct CarouselTestView: View {
     @State var data = MockDataModel.mock
-    @State var selected = MockDataModel(item: 0)
+    @State var selected: MockDataModel?
     var body: some View {
         ScrollCarouselView(data, selection: $selected, width: 50, spacing: 10) { item in
             Circle()

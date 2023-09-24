@@ -30,7 +30,6 @@ class CharactersListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        viewModel.load()
     }
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
