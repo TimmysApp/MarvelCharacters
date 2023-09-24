@@ -10,9 +10,10 @@ import NetworkUI
 
 struct HomeViewFactory {
     @MainActor static func assemble() -> some View {
-        let photoLoader = PhotoLoader(session: .shared, objectContext: PersistenceController.shared.container.newBackgroundContext())
+        let objectContext = PersistenceController.shared.mainBackgroundContext()
+        let photoLoader = PhotoLoader(session: .shared, objectContext: objectContext)
         let remoteSource = CharactersService(network: Network(configurations: NetworkConfigs()))
-        let localSource = CharactersDatabase(objectContext: PersistenceController.shared.container.newBackgroundContext())
+        let localSource = CharactersDatabase(objectContext: objectContext)
         let remoteSourceGateway = CharactersRemoteSourceGateway(remoteSource: remoteSource, localSource: localSource)
         let repository = CharactersRepository(remoteSource: remoteSourceGateway, localSource: localSource)
         let useCase = FetchCharactersUseCase(source: repository)

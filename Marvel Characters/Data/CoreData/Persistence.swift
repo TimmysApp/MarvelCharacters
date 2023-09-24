@@ -8,9 +8,11 @@
 import CoreData
 
 struct PersistenceController {
-    static let shared = PersistenceController()
+//MARK: - Properties
+    static var shared = PersistenceController()
     let container: NSPersistentContainer
-
+    private var backgroundContext: NSManagedObjectContext?
+//MARK: - Initializer
     init(inMemory: Bool = false) {
         container = NSPersistentContainer(name: "Marvel_Characters")
         if inMemory {
@@ -22,5 +24,14 @@ struct PersistenceController {
             }
         })
         container.viewContext.automaticallyMergesChangesFromParent = true
+    }
+//MARK: - Functions
+    mutating func mainBackgroundContext() -> NSManagedObjectContext {
+        if let backgroundContext {
+            return backgroundContext
+        }
+        let newContext = container.newBackgroundContext()
+        backgroundContext = newContext
+        return newContext
     }
 }
