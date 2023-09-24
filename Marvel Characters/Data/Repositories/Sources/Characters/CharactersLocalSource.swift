@@ -15,7 +15,6 @@ protocol CharactersLocalSource {
 }
 
 class CharactersDatabase {
-    private var fetchedCharacters = [Character]()
     let objectContext: NSManagedObjectContext
     init(objectContext: NSManagedObjectContext) {
         self.objectContext = objectContext
@@ -26,11 +25,11 @@ class CharactersDatabase {
 extension CharactersDatabase: CharactersLocalSource {
     func fetch() async throws -> [Character] {
         let characters = try Character.fetch(objectContext: objectContext)
-        fetchedCharacters = characters
         return characters
     }
     func update(using data: [Character]) async throws {
-        fetchedCharacters.forEach { character in
+        let oldData = try await fetch()
+        oldData.forEach { character in
             character.delete(objectContext)
         }
         data.forEach { character in

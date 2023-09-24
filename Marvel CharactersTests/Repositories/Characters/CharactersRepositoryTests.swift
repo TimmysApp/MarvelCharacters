@@ -15,6 +15,11 @@ final class CharactersRepositoryTests: XCTestCase {
         let remoteSource = CharactersRemoteSourceStub(expectedResponse: remoteResult)
         return CharactersRepository(remoteSource: remoteSource, localSource: localSource)
     }
+    private func assembleRepositoryWithDatabase(remoteResult: Result<[Character], Error>) -> CharactersRepository {
+        let localSource = CharactersDatabase(objectContext: PersistenceControllerStub().container.newBackgroundContext())
+        let remoteSource = CharactersRemoteSourceGateway(remoteSource: CharactersRemoteSourceStub(expectedResponse: remoteResult), localSource: localSource)
+        return CharactersRepository(remoteSource: remoteSource, localSource: localSource)
+    }
 //MARK: - Tests
     func testLocalSourceReturnsEmptyAndRemoteSourceFailedRepositoryThrowsError() async {
         let expectedError = ErrorStub.unknownError
@@ -48,7 +53,7 @@ final class CharactersRepositoryTests: XCTestCase {
             XCTFail("Repository needs to return data")
         }
     }
-    func testLocalSourceReturnsDataAndRemoteSourceSucceedsRepositoryReturnsLocalData() async {
+    func testLocalSourceReturnsDataAndRemoteSourceSucceedsRepositoryReturnsLocalDataWithOffsetZero() async {
         let expectedLocalData = CharacterEntityMockFactory.assembleCharacters(offset: 2, limit: 5)
         let expectedRemoteData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
         let repository = assembleRepository(localResult: .success(expectedLocalData), remoteResult: .success(expectedRemoteData))
@@ -56,6 +61,42 @@ final class CharactersRepositoryTests: XCTestCase {
             let result = try await repository.fetch(using: CharactersParameters())
             XCTAssertEqual(result, expectedLocalData)
             XCTAssertNotEqual(result, expectedRemoteData)
+        }catch {
+            XCTFail("Repository needs to return data")
+        }
+    }
+    func testLocalSourceReturnsDataAndRemoteSourceSucceedsRepositoryReturnsRemoteDataWithOffsetNonZero() async {
+        let expectedLocalData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 10)
+        let expectedRemoteData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
+        let repository = assembleRepository(localResult: .success(expectedLocalData), remoteResult: .success(expectedRemoteData))
+        do {
+            let result = try await repository.fetch(using: CharactersParameters(offset: 10))
+            XCTAssertEqual(result, expectedRemoteData)
+            XCTAssertNotEqual(result, expectedLocalData)
+        }catch {
+            XCTFail("Repository needs to return data")
+        }
+    }
+    func testRepositorySavesDataWithOffsetZero() async {
+        let expectedRemoteData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
+        let repository = assembleRepositoryWithDatabase(remoteResult: .success(expectedRemoteData))
+        do {
+            let result = try await repository.fetch(using: CharactersParameters(offset: 0))
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            let localData = try await repository.localSource.fetch()
+            XCTAssertEqual(localData, result)
+        }catch {
+            XCTFail("Repository needs to return data")
+        }
+    }
+    func testRepositoryDoesNotSaveDataWithOffsetNonZero() async {
+        let expectedRemoteData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
+        let repository = assembleRepositoryWithDatabase(remoteResult: .success(expectedRemoteData))
+        do {
+            let result = try await repository.fetch(using: CharactersParameters(offset: 1))
+            try? await Task.sleep(nanoseconds: 1_000_000_000)
+            let localData = try await repository.localSource.fetch()
+            XCTAssertEqual(localData, [])
         }catch {
             XCTFail("Repository needs to return data")
         }
