@@ -32,7 +32,7 @@ extension CharacterContent {
         var title: String {
             switch self {
                 case .series:
-                    return "Stories"
+                    return "Series"
                 case .comics:
                     return "Comics"
                 case .events:
