@@ -8,8 +8,5 @@
 import Foundation
 
 protocol CharacterDetailsSource {
-    func fetchComics(for characterID: Int) async throws -> [CharacterContent]
-    func fetchSeries(for characterID: Int) async throws -> [CharacterContent]
-    func fetchEvents(for characterID: Int) async throws -> [CharacterContent]
-    func fetchStories(for characterID: Int) async throws -> [CharacterContent]
+    func fetchContent(for characterID: Int) async throws -> [FeaturedContent]
 }

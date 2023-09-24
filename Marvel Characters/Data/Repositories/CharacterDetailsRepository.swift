@@ -8,34 +8,23 @@
 import Foundation
 
 struct CharacterDetailsRepository {
-//MARK: - Properties
-    let remoteSource: CharacterDetailsRemoteSource
-    let localSource: CharacterDetailsLocalSource
-//MARK: - Functions
-    private func fetch(for characterID: Int, type: CharacterContent.ContentType) async throws -> [CharacterContent] {
-        let localContent = (try? await localSource.fetch(for: characterID, type: type)) ?? []
-        guard localContent.isEmpty else {
-            Task.detached(priority: .background) {
-                _ = try? await remoteSource.fetch(for: characterID, type: type)
-            }
-            return localContent
-        }
-        return try await remoteSource.fetch(for: characterID, type: type)
-    }
+    let useCase: CharacterDetailsContentUseCase
 }
 
-//MARK: - CharactersSource
+//MARK: - CharacterDetailsSource
 extension CharacterDetailsRepository: CharacterDetailsSource {
-    func fetchComics(for characterID: Int) async throws -> [CharacterContent] {
-        return try await fetch(for: characterID, type: .comics)
-    }
-    func fetchSeries(for characterID: Int) async throws -> [CharacterContent] {
-        return try await fetch(for: characterID, type: .series)
-    }
-    func fetchEvents(for characterID: Int) async throws -> [CharacterContent] {
-        return try await fetch(for: characterID, type: .events)
-    }
-    func fetchStories(for characterID: Int) async throws -> [CharacterContent] {
-        return try await fetch(for: characterID, type: .stories)
+    func fetchContent(for characterID: Int) async throws -> [FeaturedContent] {
+        try await withThrowingTaskGroup(of: (CharacterContent.ContentType, [CharacterContent]).self) { group in
+            let types = CharacterContent.ContentType.allCases
+            types.forEach { type in
+                group.addTask {
+                    return (type, try await useCase.fetch(for: characterID, type: type))
+                }
+            }
+            let sectionsDictionary = try await group.reduce(into: [:]) { partialResult, item in
+                partialResult[item.0] = item.1
+            }
+            return types.map({FeaturedContent(type: $0, content: sectionsDictionary[$0] ?? [])})
+        }
     }
 }

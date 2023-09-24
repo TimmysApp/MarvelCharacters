@@ -24,7 +24,7 @@ struct CharacterContent: CollectionElement {
 }
 
 extension CharacterContent {
-    enum ContentType: Int, DatableValue {
+    enum ContentType: Int, DatableValue, CaseIterable {
         case series, stories, comics, events
         var dataValue: Any {
             return rawValue
