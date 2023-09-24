@@ -31,7 +31,7 @@ struct RemotePhotoView: View {
                     .resizable()
                     .aspectRatio(contentMode: contentMode)
             }else {
-                Text("Error")
+                Color.gray
             }
         }
     }
