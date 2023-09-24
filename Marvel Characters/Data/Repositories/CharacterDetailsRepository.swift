@@ -24,7 +24,13 @@ extension CharacterDetailsRepository: CharacterDetailsSource {
             let sectionsDictionary = try await group.reduce(into: [:]) { partialResult, item in
                 partialResult[item.0] = item.1
             }
-            return types.map({FeaturedContent(type: $0, content: sectionsDictionary[$0] ?? [])})
+            return types.compactMap { type -> FeaturedContent? in
+                let content = sectionsDictionary[type] ?? []
+                if content.isEmpty {
+                    return nil
+                }
+                return FeaturedContent(type: type, content: content)
+            }
         }
     }
 }
