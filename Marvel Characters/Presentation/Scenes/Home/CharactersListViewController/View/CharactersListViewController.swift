@@ -12,9 +12,7 @@ import SkeletonView
 class CharactersListViewController: UIViewController {
 //MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var searchTextField: UITextField!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var searchFieldContainerView: UIView!
 //MARK: - Properties
     private var cancellables = Set<AnyCancellable>()
     private var viewModel: HomeViewModel
@@ -31,10 +29,6 @@ class CharactersListViewController: UIViewController {
         super.viewDidLoad()
         setUp()
     }
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        setUpLayers()
-    }
 //MARK: - Actions
     @IBAction func carouselButtonTapped(_ sender: Any) {
         viewModel.switchStyle(to: .carousel)
@@ -42,7 +36,6 @@ class CharactersListViewController: UIViewController {
 //MARK: - Functions
     private func setUp() {
         titleLabel.text = "Marvel Characters!"
-        searchTextField.placeholder = "Looking for a character?"
         setUpTableView()
         bindViewModel()
     }
@@ -54,12 +47,6 @@ class CharactersListViewController: UIViewController {
             .sink { [weak self] state in
                 self?.update(state: state)
             }.store(in: &cancellables)
-    }
-    private func setUpLayers() {
-        searchFieldContainerView.layer.cornerRadius = 12
-        searchFieldContainerView.layer.masksToBounds = true
-        searchFieldContainerView.layer.borderColor = UIColor.border.cgColor
-        searchFieldContainerView.layer.borderWidth = 1
     }
     private func setUpTableView() {
         tableView.separatorStyle = .none
