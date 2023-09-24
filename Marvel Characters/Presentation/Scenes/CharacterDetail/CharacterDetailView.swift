@@ -46,6 +46,7 @@ struct CharacterDetailView: View {
                     Text(character.description)
                         .fontWeight(.medium)
                 }.foregroundStyle(Material.ultraThickMaterial.blendMode(.luminosity).opacity(0.8).shadow(.drop(radius: 10)))
+                    .environment(\.colorScheme, .light)
                 .padding(.top, 60)
                 .padding(.horizontal, 15)
             }.frame(maxHeight: .infinity, alignment: .top)

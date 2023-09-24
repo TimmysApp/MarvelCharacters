@@ -45,6 +45,7 @@ struct DicoverView: View {
                 }.frame(maxWidth: .infinity, alignment: .trailing)
                     .padding(.bottom, 20)
             }.foregroundStyle(Material.ultraThickMaterial.blendMode(.luminosity).opacity(0.8).shadow(.drop(radius: 10)))
+                .environment(\.colorScheme, .light)
             .background {
                 if viewModel.displayedCharacterStyle == .pagination {
                     progressView
