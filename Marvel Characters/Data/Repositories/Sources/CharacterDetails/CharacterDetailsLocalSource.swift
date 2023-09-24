@@ -24,7 +24,7 @@ class CharacterDetailsDatabase {
 //MARK: - CharacterDetailsLocalSource
 extension CharacterDetailsDatabase: CharacterDetailsLocalSource {
     func fetch(for characterID: Int, type: CharacterContent.ContentType) async throws -> [CharacterContent] {
-        let content = try CharacterContent.fetch(with: NSPredicate(format: "characterID == %@, type == %@", String(characterID), String(type.rawValue)), objectContext: objectContext)
+        let content = try CharacterContent.fetch(with: NSPredicate(format: "characterID == %@ && type == %@", String(characterID), String(type.rawValue)), objectContext: objectContext)
         return content
     }
     func update(using data: [CharacterContent], for characterID: Int, type: CharacterContent.ContentType) async throws {
