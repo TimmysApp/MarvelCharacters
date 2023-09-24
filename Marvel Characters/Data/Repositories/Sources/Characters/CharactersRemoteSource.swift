@@ -31,7 +31,9 @@ struct CharactersRemoteSourceGateway: CharactersRemoteSource {
     let localSource: CharactersLocalSource
     func fetch(using parameters: CharactersParameters) async throws -> [Character] {
         let result = try await remoteSource.fetch(using: parameters)
-        try await localSource.update(using: result)
+        if parameters.offset == 0 {
+            try await localSource.update(using: result)
+        }
         return result
     }
 }

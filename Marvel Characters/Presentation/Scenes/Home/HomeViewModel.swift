@@ -9,19 +9,21 @@ import Foundation
 
 @MainActor class HomeViewModel: ObservableObject {
 //MARK: - Publishers
-    @Published var selectedCharacter: Character?
-    @Published var displayStyle = HomeDisplayStyle.carousel
+    @Published var selectedCharacter: CharacterDisplayStyle?
+    @Published var displayStyle = HomeDisplayStyle.list
     @Published var state = TableViewState.loading
-    @Published var characters = [Character]()
+    @Published var characters = [CharacterDisplayStyle]()
 //MARK: - Closures
     var reloadTableView: (() -> Void)?
 //MARK: - Properties
+    private let loader: PhotoLoader
     private let limit = 15
     private let useCase: FetchCharactersUseCase
     private(set) var count = 0
 //MARK: - Initializer
-    init(useCase: FetchCharactersUseCase) {
+    init(useCase: FetchCharactersUseCase, loader: PhotoLoader) {
         self.useCase = useCase
+        self.loader = loader
     }
 //MARK: - Functions
     private func loadCharacters() async {
@@ -40,28 +42,35 @@ import Foundation
         }
         let newDataCount = data.count
         count += newDataCount
-        characters.append(contentsOf: data)
+        _ = characters.popLast()
+        characters.append(contentsOf: data.map({CharacterDisplayStyle.info($0)}))
+        addPaginationState()
         reloadTableView?()
+    }
+    private func addPaginationState() {
+        guard characters.last != .pagination else {return}
+        selectedCharacter = characters.last
+        characters.append(.pagination)
     }
 //MARK: - View Functions
     func load() async {
         state = .loading
         await loadCharacters()
+        addPaginationState()
+        selectedCharacter = characters.first
+    }
+    func paginate() async {
+        await loadCharacters()
     }
     func setUp(cell: CharacterTableViewCell, at indexPath: IndexPath) {
-        let character = characters[indexPath.row]
-        let viewModel = CharacterTableCellViewModel(title: character.name, description: character.description)
+        guard let character = characters[indexPath.row].get() else {return}
+        let viewModel = CharacterTableCellViewModel(imageURL: character.thumbnailURL, title: character.name, description: character.description, loader: loader)
         cell.setUp(with: viewModel)
     }
     func didSelect(at indexPath: IndexPath) {
         
     }
-}
-
-enum TableViewState {
-    case empty, error(String), loading, loaded
-}
-
-enum HomeDisplayStyle {
-    case list, carousel
+    func switchStyle(to style: HomeDisplayStyle) {
+        displayStyle = style
+    }
 }
