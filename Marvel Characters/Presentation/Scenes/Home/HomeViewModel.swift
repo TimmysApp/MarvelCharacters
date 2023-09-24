@@ -76,6 +76,10 @@ import Foundation
         guard let character = characters[indexPath.row].get() else {return}
         navigationPath.append(character)
     }
+    func navigateToDisplayedCharacter() {
+        guard let displayedCharacter else {return}
+        navigationPath.append(displayedCharacter)
+    }
     func isPaginationCell(_ indexPath: IndexPath) -> Bool {
         return indexPath.row == count - 1
     }
@@ -87,5 +91,6 @@ import Foundation
     }
     func switchStyle(to style: HomeDisplayStyle) {
         displayStyle = style
+        displayedCharacterStyle = characters.first
     }
 }

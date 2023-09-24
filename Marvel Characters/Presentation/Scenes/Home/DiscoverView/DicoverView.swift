@@ -34,6 +34,16 @@ struct DicoverView: View {
                 Text(viewModel.displayedCharacter?.description ?? "")
                     .fontWeight(.medium)
                 Spacer()
+                Button(action: {
+                    viewModel.navigateToDisplayedCharacter()
+                }) {
+                    Text("View More")
+                        .fontWeight(.semibold)
+                        .padding(10)
+                        .background(Material.ultraThin)
+                        .clipShape(RoundedRectangle(cornerRadius: 12, style: .continuous))
+                }.frame(maxWidth: .infinity, alignment: .trailing)
+                    .padding(.bottom, 20)
             }.foregroundStyle(Material.ultraThickMaterial.blendMode(.luminosity).opacity(0.8).shadow(.drop(radius: 10)))
             .background {
                 if viewModel.displayedCharacterStyle == .pagination {
