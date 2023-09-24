@@ -9,9 +9,10 @@ import Foundation
 
 @MainActor class FeaturedViewModel: ObservableObject {
 //MARK: - Properties
+    @Published var loading = true
     @Published var featuredData = [FeaturedContent]()
-    let characterID: Int
-    let useCase: CharacterDetailsUseCase
+    private let characterID: Int
+    private let useCase: CharacterDetailsUseCase
 //MARK: - Initializers
     init(characterID: Int, useCase: CharacterDetailsUseCase) {
         self.characterID = characterID
@@ -22,6 +23,7 @@ import Foundation
         do {
             let data = try await useCase.fetch(for: characterID)
             featuredData = data
+            loading = false
         }catch {
             
         }

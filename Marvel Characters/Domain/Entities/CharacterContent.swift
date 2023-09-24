@@ -29,6 +29,18 @@ extension CharacterContent {
         var dataValue: Any {
             return rawValue
         }
+        var title: String {
+            switch self {
+                case .series:
+                    return "Stories"
+                case .comics:
+                    return "Comics"
+                case .events:
+                    return "Events"
+                case .stories:
+                    return "Stories"
+            }
+        }
     }
 }
 

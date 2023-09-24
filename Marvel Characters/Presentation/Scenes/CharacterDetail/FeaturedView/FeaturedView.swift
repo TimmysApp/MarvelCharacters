@@ -17,10 +17,20 @@ struct FeaturedView: View {
                     .fontWeight(.bold)
                     .foregroundStyle(Color.text)
                     .frame(maxWidth: .infinity, alignment: .leading)
+                if !viewModel.loading {
+                    ForEach(viewModel.featuredData) { item in
+                        FeaturedTypeView(content: item)
+                    }
+                }
             }.padding(.top, 20)
             .padding(.horizontal, 15)
         }.task {
             await viewModel.load()
+        }.overlay {
+            if viewModel.loading {
+                ProgressView()
+                    .controlSize(.large)
+            }
         }
     }
 }
