@@ -31,7 +31,8 @@ struct CharacterDetailsRemoteSourceGateway: CharacterDetailsRemoteSource {
     let localSource: CharacterDetailsLocalSource
     func fetch(for characterID: Int, type: CharacterContent.ContentType) async throws -> [CharacterContent] {
         let result = try await remoteSource.fetch(for: characterID, type: type)
-        try await localSource.update(using: result, for: characterID, type: type)
-        return result
+        let limittedResult = Array(result.prefix(3))
+        try await localSource.update(using: limittedResult, for: characterID, type: type)
+        return limittedResult
     }
 }
