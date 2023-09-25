@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ContentViewState {
+enum ContentViewState: Equatable {
     case empty, error(String), loading, loaded
     var loaded: Bool {
         switch self {
