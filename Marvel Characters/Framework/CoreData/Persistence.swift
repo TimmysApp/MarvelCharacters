@@ -15,12 +15,13 @@ struct PersistenceController {
 //MARK: - Initializer
     init(inMemory: Bool = false) {
         let storeName = "Marvel_Characters"
-        let appGroup = "group.swiftlydesign.data"
+        let appGroup = "{{AppGrpup}}"
         container = NSPersistentContainer(name: storeName)
-        guard let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?.appendingPathComponent("\(storeName).sqlite") else {
-            fatalError("Could not find app group")
+        if let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?.appendingPathComponent("\(storeName).sqlite") {
+            container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
+        }else {
+            print("Could not find app group")
         }
-        container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
