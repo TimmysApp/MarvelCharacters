@@ -14,7 +14,7 @@ extension Character {
             if let thumbnail = item.thumbnail {
                 thumbnailPath = thumbnail.path + "." + thumbnail.fileExtension
             }
-            return Character(id: item.id, name: item.name, description: item.description, thumbnailPath: thumbnailPath, additionalLinks: AdditionalLink.Mapper.map(item.urls))
+            return Character(id: item.id, name: item.name, description: item.description, thumbnailPath: thumbnailPath)
         }
         static func map(_ items: [CharacterDTO]) -> [Character] {
             return items.map({map($0)})

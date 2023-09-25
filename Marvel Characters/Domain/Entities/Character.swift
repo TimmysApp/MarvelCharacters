@@ -21,7 +21,6 @@ struct Character: CollectionElement {
         }
         return URL(string: thumbnailPath.replacingOccurrences(of: "http", with: "https"))
     }
-    var additionalLinks: [AdditionalLink]
 }
 
 //MARK: - Datable
@@ -32,6 +31,6 @@ extension Character: Datable {
         guard let object else {
             return nil
         }
-        return Character(id: Int(object.oid), name: object.name ?? "", description: object.characterDescription ?? "", thumbnailPath: object.thumbnailPath, additionalLinks: object.additionalLinks?.model() ?? [])
+        return Character(id: Int(object.oid), name: object.name ?? "", description: object.characterDescription ?? "", thumbnailPath: object.thumbnailPath)
     }
 }

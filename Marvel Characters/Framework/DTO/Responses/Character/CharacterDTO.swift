@@ -13,9 +13,4 @@ struct CharacterDTO: Codable {
     @DefaultCodable var description: String
     var thumbnail: ThumbnailDTO?
     @DefaultCodable var resourceURI: String
-    var comics: Contents?
-    var series: Contents?
-    var stories: Contents?
-    var events: Contents?
-    @DefaultCodable var urls: [URLItemDTO]
 }

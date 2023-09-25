@@ -1,18 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22F66" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="AdditionalLinkData" representedClassName="AdditionalLinkData" syncable="YES" codeGenerationType="class">
-        <attribute name="oid" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="path" optional="YES" attributeType="String"/>
-        <attribute name="type" optional="YES" attributeType="String"/>
-        <relationship name="character" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="CharacterData" inverseName="additionalLinks" inverseEntity="CharacterData"/>
-    </entity>
     <entity name="CharacterData" representedClassName="CharacterData" syncable="YES" codeGenerationType="class">
         <attribute name="characterDescription" optional="YES" attributeType="String"/>
         <attribute name="modifiedDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="oid" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="thumbnailPath" optional="YES" attributeType="String"/>
-        <relationship name="additionalLinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="AdditionalLinkData" inverseName="character" inverseEntity="AdditionalLinkData"/>
     </entity>
     <entity name="ContentData" representedClassName="ContentData" syncable="YES" codeGenerationType="class">
         <attribute name="characterID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>

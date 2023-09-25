@@ -10,7 +10,7 @@ import Foundation
 
 struct CharacterEntityMockFactory {
     static func assembleCharacter(id: Int = .random(in: 0..<10000)) -> Character {
-        return Character(id: id, name: "Test Character", description: "This is a test Character", thumbnailPath: "", additionalLinks: [])
+        return Character(id: id, name: "Test Character", description: "This is a test Character", thumbnailPath: "")
     }
     static func assembleCharacters(offset: Int, limit: Int) -> [Character] {
         let maxRange = offset + limit
