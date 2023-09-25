@@ -103,6 +103,17 @@ import XCTest
         await viewModel.refresh()
         XCTAssertEqual(viewModel.count, expectedCount)
     }
+    func testFailedRefreshUpdatesOverlayError() async {
+        let expectedError = ErrorStub.unknownError
+        let characters = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 15)
+        let source = CharactersSourceStub(expectedResponse: .success(characters))
+        let viewModel = viewModel(source: source)
+        await viewModel.load()
+        await viewModel.paginate()
+        source.expectedResponse = .failure(expectedError)
+        await viewModel.refresh()
+        XCTAssertEqual(viewModel.overlayError, expectedError.localizedDescription)
+    }
     func testSuccessfullPaginateAppendsToCharactersArray() async {
         let characters = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 15)
         let viewModel = viewModel(result: .success(characters))
@@ -119,7 +130,7 @@ import XCTest
         await viewModel.paginate()
         XCTAssertEqual(viewModel.characters.last, paginationItem)
     }
-    func testSuccessfulPaginateUpdatesCount() async {
+    func testSuccessfullPaginateUpdatesCount() async {
         let characters = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 15)
         let viewModel = viewModel(result: .success(characters))
         await viewModel.load()
@@ -146,6 +157,16 @@ import XCTest
         source.expectedResponse = .failure(ErrorStub.unknownError)
         await viewModel.paginate()
         XCTAssertEqual(viewModel.count, expectedCount)
+    }
+    func testFailedPaginateUpdatesOverlayError() async {
+        let expectedError = ErrorStub.unknownError
+        let characters = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 15)
+        let source = CharactersSourceStub(expectedResponse: .success(characters))
+        let viewModel = viewModel(source: source)
+        await viewModel.load()
+        source.expectedResponse = .failure(expectedError)
+        await viewModel.paginate()
+        XCTAssertEqual(viewModel.overlayError, expectedError.localizedDescription)
     }
     func testIsPaginationCellReturnsTrueIfIndexIsLast() async {
         let viewModel = viewModel(result: .success([]))

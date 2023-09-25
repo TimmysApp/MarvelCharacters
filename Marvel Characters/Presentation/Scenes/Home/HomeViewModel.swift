@@ -37,7 +37,7 @@ import Foundation
         }catch {
             let message = error.localizedDescription
             if count > 1 {
-                await updateOverlay(error: message)
+                updateOverlay(error: message)
             }else {
                 state = .error(message)
             }
@@ -66,10 +66,12 @@ import Foundation
         displayedCharacterStyle = characters.last
         characters.append(.pagination)
     }
-    private func updateOverlay(error: String?) async {
+    private func updateOverlay(error: String?) {
         overlayError = error
-        try? await Task.sleep(nanoseconds: 3_000_000_000)
-        overlayError = nil
+        Task {
+            try? await Task.sleep(nanoseconds: 5_000_000_000)
+            overlayError = nil
+        }
     }
 //MARK: - View Functions
     func load() async {
