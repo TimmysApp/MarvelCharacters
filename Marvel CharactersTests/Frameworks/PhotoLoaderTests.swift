@@ -86,7 +86,7 @@ final class PhotoLoaderTests: XCTestCase {
         XCTAssertEqual(runningTasks, 0)
     }
     func testLoaderDoesNotCreateMultipleTasksForSameURL() async {
-        let expectedCalls = Int.random(in: 1..<10)
+        let expectedCalls = Int.random(in: 2..<10)
         let loader = loader(expectedData: expectedData, delay: 100_000_000_000)
         Task {
             for _ in 0..<expectedCalls {
