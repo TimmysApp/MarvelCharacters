@@ -15,14 +15,19 @@ struct CharactersTimelineProvider {
     let useCase: FetchCharactersUseCase
 //MARK: - Functions
     private func getEntries() async -> [CharacterEntity] {
+        let photoLoader = PhotoLoader(session: URLSession.shared, objectContext: objectContext)
         do {
             let currentDate = Date()
             let characters = try await useCase.fetch()
-            let entries = characters.indices.map { index in
+            let entries = await characters.indices.asyncMap { index in
                 let character = characters[index]
                 var photoData: Data?
-                if let url = character.thumbnailURL?.absoluteString {
-                    photoData = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", url), objectContext: objectContext).first?.data
+                if let url = character.thumbnailURL {
+                    let path = url.absoluteString
+                    photoData = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", path), objectContext: objectContext).first?.data
+                    if photoData == nil {
+                        photoData = await photoLoader.fetchData(for: url)
+                    }
                 }
                 let newDate = Calendar.current.date(byAdding: .minute, value: 15 * index, to: currentDate)!
                 return CharacterEntity(date: newDate, character: character, photoData: photoData, preview: false, empty: false)
@@ -55,5 +60,15 @@ extension CharactersTimelineProvider: TimelineProvider {
             let timeline = Timeline(entries: entries, policy: .atEnd)
             completion(timeline)
         }
+    }
+}
+
+extension Sequence {
+    func asyncMap<T>(_ transform: (Element) async throws -> T) async rethrows -> [T] {
+        var values = [T]()
+        for element in self {
+            try await values.append(transform(element))
+        }
+        return values
     }
 }

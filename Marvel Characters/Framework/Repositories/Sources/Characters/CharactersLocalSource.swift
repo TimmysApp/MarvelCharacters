@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 import DataStruct
+import WidgetKit
 
 protocol CharactersLocalSource {
     func fetch() async throws -> [Character]
@@ -36,6 +37,7 @@ extension CharactersDatabase: CharactersLocalSource {
             data.forEach { character in
                 character.save(objectContext)
             }
+            WidgetCenter.shared.reloadAllTimelines()
         }
     }
 }

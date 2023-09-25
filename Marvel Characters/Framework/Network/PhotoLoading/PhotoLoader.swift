@@ -42,6 +42,13 @@ actor PhotoLoader: ObservableObject {
     func retreiveFromMemory(for url: URL) -> UIImage? {
         return cacheStore.object(forKey: url as NSURL)
     }
+    func fetchData(for url: URL) async -> Data? {
+        let task = Task {
+            let data = try? await session.load(for: url)
+            return data
+        }
+        return await task.value
+    }
 //MARK: - Private Functions
     private func fetchImage(for url: URL) async -> UIImage? {
         if let cachedImage = await checkCache(for: url) {

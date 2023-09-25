@@ -106,6 +106,8 @@
 		BABCC2832ABF91C10071A0B7 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABCC2822ABF91C10071A0B7 /* HomeView.swift */; };
 		BABCC2852ABF91CB0071A0B7 /* HomeViewFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = BABCC2842ABF91CB0071A0B7 /* HomeViewFactory.swift */; };
 		BACA1D662ABF7F8E00AECAB5 /* DicoverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BACA1D652ABF7F8E00AECAB5 /* DicoverView.swift */; };
+		BACAD3BE2AC2151E0018247B /* PhotoLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA4D15332AC0251B00465C0D /* PhotoLoader.swift */; };
+		BACAD3BF2AC2151E0018247B /* PhotoLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C222AC182CF0058E707 /* PhotoLoaderClient.swift */; };
 		BAD02DF02AC06C530051330E /* CharacterDetailsContentRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD02DEF2AC06C530051330E /* CharacterDetailsContentRepository.swift */; };
 		BAD02DF42AC06CD80051330E /* CharacterContentMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD02DF32AC06CD80051330E /* CharacterContentMapper.swift */; };
 		BAD02DF72AC06DA10051330E /* CharacterDetailsLocalSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BAD02DF62AC06DA10051330E /* CharacterDetailsLocalSource.swift */; };
@@ -1171,6 +1173,7 @@
 				BAB8F3812AC1F11900DA737D /* CharactersWidget.swift in Sources */,
 				BAB8F3792AC1F07200DA737D /* CharactersRepository.swift in Sources */,
 				BAB8F3842AC1F42B00DA737D /* CharactresWidgetTimelineProviderFactory.swift in Sources */,
+				BACAD3BF2AC2151E0018247B /* PhotoLoaderClient.swift in Sources */,
 				BAB8F3662AC1EDE800DA737D /* Persistence.swift in Sources */,
 				BAB8F3702AC1EFD300DA737D /* Color.swift in Sources */,
 				BAB8F37D2AC1F0C900DA737D /* CharacterEntity.swift in Sources */,
@@ -1180,6 +1183,7 @@
 				BAB8F3682AC1EE0F00DA737D /* CharactersLocalSource.swift in Sources */,
 				BAB8F34F2AC1ED7400DA737D /* MarvelCharactersWidgetsBundle.swift in Sources */,
 				BAB8F3762AC1F03400DA737D /* CharactersSources.swift in Sources */,
+				BACAD3BE2AC2151E0018247B /* PhotoLoader.swift in Sources */,
 				BAB8F3632AC1EDCA00DA737D /* Character.swift in Sources */,
 				BAB8F3892AC1F5E600DA737D /* CharacterWidgetSmallView.swift in Sources */,
 				BAB8F3862AC1F4DD00DA737D /* CharacterWidgetView.swift in Sources */,
