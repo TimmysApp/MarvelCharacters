@@ -16,9 +16,10 @@ actor PhotoLoader: ObservableObject {
     private let session: URLSession
     private var tasks: [URL: Task<UIImage?, Error>] = [:]
 //MARK: - Initializer
-    init(session: URLSession, objectContext: NSManagedObjectContext) {
+    init(session: PhotoLoaderClient, objectContext: NSManagedObjectContext, cahingLimit: Int = 100) {
         self.session = session
         self.objectContext = objectContext
+        self.cacheStore.countLimit = cahingLimit
     }
 //MARK: - Functions
     func loadImage(for url: URL) async -> UIImage? {
