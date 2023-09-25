@@ -9,7 +9,6 @@ import CoreData
 @testable import Marvel_Characters
 
 struct PersistenceControllerStub {
-//    static let shared = PersistenceControllerStub()
     let container: NSPersistentContainer
     init() {
         container = NSPersistentContainer(name: "Marvel_Characters")
