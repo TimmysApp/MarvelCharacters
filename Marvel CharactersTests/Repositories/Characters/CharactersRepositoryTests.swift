@@ -92,7 +92,7 @@ final class CharactersRepositoryTests: XCTestCase {
         let expectedRemoteData = CharacterEntityMockFactory.assembleCharacters(offset: 0, limit: 5)
         let repository = assembleRepositoryWithDatabase(remoteResult: .success(expectedRemoteData))
         do {
-            let result = try await repository.fetch(using: CharactersParameters(offset: 1))
+            _ = try await repository.fetch(using: CharactersParameters(offset: 1))
             let localData = try await repository.localSource.fetch()
             XCTAssertEqual(localData, [])
         }catch {
