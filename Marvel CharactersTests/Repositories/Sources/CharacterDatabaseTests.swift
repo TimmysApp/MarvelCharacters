@@ -39,6 +39,7 @@ final class CharacterDatabaseTests: XCTestCase {
             try await source.update(using:  newCharacters)
             let fetchedData = try await source.fetch()
             XCTAssertEqual(fetchedData, newCharacters)
+            XCTAssertNotEqual(fetchedData, oldCharacters)
         }catch {
             XCTFail("No errors should be thrown")
         }
