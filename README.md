@@ -8,19 +8,19 @@ The Marvel Character App is a feature-rich and complex iOS application build usi
 - The app supports both light and dark mode.
 
 ### Marvel API Integration
-- The app fetches characters from the Marvel API, allowing users to explore a vast array of Marvel characters.
+- The app fetches characters from the [Marvel API](https://developer.marvel.com/docs#!/public/getCreatorCollection_get_0), allowing users to explore a vast array of Marvel characters.
 
 ### List View and Carousel View
 - The app offers both a list view and a carousel view that are paginated for users to browse characters, providing a versatile and engaging user experience.
 - Users can toggle between these views using a convenient button.
 
-### CoreData Caching
-- To enhance performance and user experience, the app uses CoreData to cache the first 15 characters. This ensures that users can quickly access previously viewed characters without making additional API requests.
+### `CoreData` Caching
+- To enhance performance and user experience, the app uses `CoreData` to cache the first 15 characters. This ensures that users can quickly access previously viewed characters without making additional API requests.
 
 ### Image Loading Optimization
 - The app optimizes image loading by detecting duplicate image requests and preventing redundant fetches. This means that an image displayed in multiple places will only be fetched once, reducing network usage and improving loading times.
-- Fetched images are stored in CoreData for caching between app sessions, ensuring that previously viewed images are readily available.
-- Images are also cached in NSCache for rapid loading within the same session, providing a smooth user experience.
+- Fetched images are stored in `CoreData` for caching between app sessions, ensuring that previously viewed images are readily available.
+- Images are also cached using `NSCache` for rapid loading within the same session, providing a smooth user experience.
 
 ### Character Details View
 - The app includes a character details view that presents essential information about each character, including their image, name, and description.
@@ -32,11 +32,11 @@ The Marvel Character App is a feature-rich and complex iOS application build usi
 
 ### MVVM Clean Architecture
 - The app is built using the MVVM (Model-View-ViewModel) clean architecture, promoting separation of concerns and maintainability.
-- It utilizes use cases, entities, repository interfaces in the domain layer, and sources, repository implementations, DTOs (Data Transfer Objects), mappers, and services in the framework layer.
-- Views and view models are organized in the presentation layer, ensuring a clear and scalable code structure.
+- It utilizes use cases, entities, repository interfaces in the domain layer; and sources, repository implementations, DTOs (Data Transfer Objects), mappers, and services in the framework layer.
+- Views, reusable components, and ViewModels are organized in the presentation layer, ensuring a clear and scalable code structure.
 
 ### Unit Tests
-- The app includes a comprehensive suite of unit tests for repositories, sources, and view models, ensuring code reliability and stability.
+- The app includes a comprehensive suite of unit tests for repositories, sources, and ViewModels, ensuring code reliability and stability.
 
 ### Swift Concurrency
 - Swift Concurrency is employed to optimize asynchronous operations, enhancing performance and responsiveness.
@@ -48,8 +48,10 @@ To run the app locally and explore its features, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Open the Xcode project.
-3. Build and run the app on your iOS simulator or physical device.
-4. Explore the app's list view, carousel view, character details, and widgets.
+3. Configure an app group to be used by the app.
+4. Open `Persistence.swift` under `Marvel Characters/Framework/CoreData` and replace `{{AppGrpup}}` with the configured group name.
+5. Build and run the app on your iOS simulator or physical device.
+6. Explore the app's list view, carousel view, character details, and widgets.
 
 ## Dependencies
 
