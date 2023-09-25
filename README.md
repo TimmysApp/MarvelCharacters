@@ -48,10 +48,11 @@ To run the app locally and explore its features, follow these steps:
 
 1. Clone the repository to your local machine.
 2. Open the Xcode project.
-3. Configure an app group to be used by the app. (Optional, required for widgets)
-4. Open `Persistence.swift` under `Marvel Characters/Framework/CoreData` and replace `{{AppGrpup}}` with the configured group name. (Optional, required for widgets)
-5. Build and run the app on your iOS simulator or physical device.
-6. Explore the app's list view, carousel view, character details, and widgets.
+3. Go to project settigns and change the development team and bundle identifier. **(Optional, required for widgets)**
+4. Configure an app group to be used by the app for both the iOS and widget targets. **(Optional, required for widgets)**
+5. Open `Persistence.swift` under `Marvel Characters/Framework/CoreData` and replace `{{AppGrpup}}` with the configured group name. **(Optional, required for widgets)**
+6. Build and run the app on your iOS simulator or physical device.
+7. Explore the app's list view, carousel view, character details, and widgets.
 
 ## Dependencies
 
