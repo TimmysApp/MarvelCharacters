@@ -13,6 +13,6 @@ struct AuthenticationParametersFactory {
         let timestamp = String(Date().timeIntervalSince1970)
         let publicApiKey = ""
         let hashRawString = timestamp + publicApiKey + ""
-        return AuthenticationParameters(ts: timestamp, apiKey: publicApiKey, hash: MD5Hasher.hash(hashRawString))
+        return AuthenticationParameters(ts: timestamp, apikey: publicApiKey, hash: MD5Hasher.hash(hashRawString))
     }
 }
