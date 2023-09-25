@@ -40,7 +40,7 @@ final class PhotoLoaderTests: XCTestCase {
 //MARK: - Tests
     func testLoaderCachesDataWhenNotCached() async {
         let loader = loader(expectedData: expectedData)
-        let loadedImage = await loader.loadImage(for: stubURL)
+        _ = await loader.loadImage(for: stubURL)
         let cachedData = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", stubURL.absoluteString), objectContext: objectContext).first?.data
         let lastCachedItem = await loader.lastSavedItem
         XCTAssertEqual(lastCachedItem, stubURL)
@@ -49,21 +49,21 @@ final class PhotoLoaderTests: XCTestCase {
     func testLoaderRemovesItemWhenDataIsEmpty() async {
         await saveStubCache(data: expectedData)
         let loader = loader(expectedData: expectedData)
-        let loadedImage = await loader.loadImage(for: stubURL)
+        _ = await loader.loadImage(for: stubURL)
         let count = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", stubURL.absoluteString), objectContext: objectContext).count
         XCTAssertEqual(count, 1)
     }
     func testLoaderCachesDataWhenItemSavedWithoutData() async {
-        await saveStubCache(data: expectedData)
+        await saveStubCache(data: nil)
         let loader = loader(expectedData: expectedData)
-        let loadedImage = await loader.loadImage(for: stubURL)
+        _ = await loader.loadImage(for: stubURL)
         let lastCachedItem = await loader.lastSavedItem
-        XCTAssertEqual(lastCachedItem, nil)
+        XCTAssertNotEqual(lastCachedItem, nil)
     }
     func testLoaderDoesNotCacheDataWhenCachedDataFound() async {
         await saveStubCache(data: expectedData)
         let loader = loader(expectedData: expectedData)
-        let loadedImage = await loader.loadImage(for: stubURL)
+        _ = await loader.loadImage(for: stubURL)
         let lastCachedItem = await loader.lastSavedItem
         XCTAssertEqual(lastCachedItem, nil)
     }

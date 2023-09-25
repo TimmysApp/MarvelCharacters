@@ -74,7 +74,7 @@ actor PhotoLoader: ObservableObject {
     }
     private func checkCache(for url: URL) async -> UIImage? {
         await withCheckedContinuation { continuation in
-            if  let item = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", url.absoluteString), objectContext: objectContext).first {
+            if let item = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", url.absoluteString), objectContext: objectContext).first {
                 if let data = item.data {
                     continuation.resume(returning: UIImage(data: data))
                 }else {
