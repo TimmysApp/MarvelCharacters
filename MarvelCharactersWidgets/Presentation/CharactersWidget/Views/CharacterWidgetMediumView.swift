@@ -23,6 +23,7 @@ struct CharacterWidgetMediumView: View {
             }
             Text(entry.character.description)
                 .fontWeight(.medium)
+                .font(.callout)
                 .shadow(radius: 10, y: 1)
                 .frame(maxHeight: .infinity)
         }

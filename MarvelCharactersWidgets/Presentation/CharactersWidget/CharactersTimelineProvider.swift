@@ -24,7 +24,7 @@ struct CharactersTimelineProvider {
                 if let url = character.thumbnailURL?.absoluteString {
                     photoData = try? PhotoCache.fetch(with: NSPredicate(format: "url == %@", url), objectContext: objectContext).first?.data
                 }
-                let newDate = Calendar.current.date(byAdding: .hour, value: index, to: currentDate)!
+                let newDate = Calendar.current.date(byAdding: .minute, value: 15 * index, to: currentDate)!
                 return CharacterEntity(date: newDate, character: character, photoData: photoData, preview: false, empty: false)
             }
             return entries
