@@ -14,6 +14,7 @@ import Foundation
     @Published var displayStyle = HomeDisplayStyle.list
     @Published var state = ContentViewState.loading
     @Published var characters = [CharacterDisplayStyle.pagination]
+    @Published var overlayError: String?
 //MARK: - Closures
     var reloadTableView: (() -> Void)?
 //MARK: - Properties
@@ -34,8 +35,12 @@ import Foundation
             let result = try await useCase.fetch(using: prameters)
             update(with: result, paginating: paginating)
         }catch {
-            print(error)
-            state = .error(error.localizedDescription)
+            let message = error.localizedDescription
+            if count > 1 {
+                await updateOverlay(error: message)
+            }else {
+                state = .error(message)
+            }
         }
     }
     private func update(with data: [Character], paginating: Bool) {
@@ -60,6 +65,11 @@ import Foundation
         guard characters.last != .pagination else {return}
         displayedCharacterStyle = characters.last
         characters.append(.pagination)
+    }
+    private func updateOverlay(error: String?) async {
+        overlayError = error
+        try? await Task.sleep(nanoseconds: 3_000_000_000)
+        overlayError = nil
     }
 //MARK: - View Functions
     func load() async {

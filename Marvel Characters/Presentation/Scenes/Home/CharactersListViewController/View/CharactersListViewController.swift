@@ -13,7 +13,8 @@ class CharactersListViewController: UIViewController {
 //MARK: - Outlets
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
-    @IBOutlet weak var stateLable: UILabel!
+    @IBOutlet weak var stateLabel: UILabel!
+    @IBOutlet weak var overlayErrorLabel: UILabel!
 //MARK: - Properties
     private let refreshControl = UIRefreshControl()
     private var cancellables = Set<AnyCancellable>()
@@ -55,6 +56,13 @@ class CharactersListViewController: UIViewController {
             .sink { [weak self] state in
                 self?.update(state: state)
             }.store(in: &cancellables)
+        viewModel.$overlayError
+            .sink { [weak self] error in
+                UIView.animate(withDuration: 0.5) {
+                    self?.overlayErrorLabel.isHidden = error == nil
+                    self?.overlayErrorLabel.text = error
+                }
+            }.store(in: &cancellables)
     }
     private func updateTileFont(offset: CGFloat) {
         let baseFontSize: CGFloat = 34
@@ -75,10 +83,10 @@ class CharactersListViewController: UIViewController {
     private func update(state: ContentViewState) {
         switch state {
             case .empty:
-                stateLable.text = "No Characters Available!"
+                stateLabel.text = "No Characters Available!"
                 tableView.isHidden = true
             case .error(let string):
-                stateLable.text = string
+                stateLabel.text = string
                 tableView.isHidden = true
             case .loading:
                 tableView.isHidden = false
@@ -87,7 +95,7 @@ class CharactersListViewController: UIViewController {
                 tableView.isHidden = false
                 tableView.hideSkeleton()
         }
-        stateLable.isHidden = !tableView.isHidden
+        stateLabel.isHidden = !tableView.isHidden
     }
 }
 
