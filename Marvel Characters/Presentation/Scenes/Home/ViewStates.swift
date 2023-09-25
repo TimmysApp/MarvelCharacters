@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum TableViewState {
+enum ContentViewState {
     case empty, error(String), loading, loaded
     var loaded: Bool {
         switch self {

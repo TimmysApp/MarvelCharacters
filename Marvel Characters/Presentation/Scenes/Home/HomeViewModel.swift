@@ -12,7 +12,7 @@ import Foundation
     @Published var navigationPath = [Character]()
     @Published var displayedCharacterStyle: CharacterDisplayStyle?
     @Published var displayStyle = HomeDisplayStyle.list
-    @Published var state = TableViewState.loading
+    @Published var state = ContentViewState.loading
     @Published var characters = [CharacterDisplayStyle]()
 //MARK: - Closures
     var reloadTableView: (() -> Void)?

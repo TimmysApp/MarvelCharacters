@@ -9,7 +9,7 @@ import Foundation
 
 @MainActor class FeaturedViewModel: ObservableObject {
 //MARK: - Properties
-    @Published var loading = true
+    @Published var state = ContentViewState.loading
     @Published var featuredData = [FeaturedContent]()
     private let characterID: Int
     private let useCase: CharacterDetailsUseCase
@@ -23,9 +23,9 @@ import Foundation
         do {
             let data = try await useCase.fetch(for: characterID)
             featuredData = data
-            loading = false
+            state = featuredData.isEmpty ? .empty: .loaded
         }catch {
-            
+            state = .error(error.localizedDescription)
         }
     }
 }

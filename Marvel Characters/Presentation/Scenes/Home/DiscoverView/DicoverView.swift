@@ -68,22 +68,8 @@ struct DicoverView: View {
                 .font(.title3)
                 .fontWeight(.semibold)
             HStack {
-                ScrollCarouselView(viewModel.characters, selection: $viewModel.displayedCharacterStyle, width: itemWidth, spacing: spacing) { type in
-                    switch type {
-                        case .info(let character):
-                            RemotePhotoView(url: character.thumbnailURL)
-                                .frame(width: itemWidth, height: itemWidth * 1.5)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                        case .pagination:
-                            progressView
-                                .frame(width: itemWidth, height: itemWidth * 1.5)
-                                .background(Material.ultraThin)
-                                .clipShape(RoundedRectangle(cornerRadius: 12))
-                                .task {
-                                    await viewModel.paginate()
-                                }
-                    }
-                }.frame(height: itemWidth * 1.5)
+                carouselView
+                    .content(state: viewModel.state, style: Color.white)
             }
         }.background(Color.black)
     }
@@ -91,5 +77,23 @@ struct DicoverView: View {
         ProgressView()
             .controlSize(.large)
             .tint(.white.opacity(0.9))
+    }
+    private var carouselView: some View {
+        ScrollCarouselView(viewModel.characters, selection: $viewModel.displayedCharacterStyle, width: itemWidth, spacing: spacing) { type in
+            switch type {
+                case .info(let character):
+                    RemotePhotoView(url: character.thumbnailURL)
+                        .frame(width: itemWidth, height: itemWidth * 1.5)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                case .pagination:
+                    progressView
+                        .frame(width: itemWidth, height: itemWidth * 1.5)
+                        .background(Material.ultraThin)
+                        .clipShape(RoundedRectangle(cornerRadius: 12))
+                        .task {
+                            await viewModel.paginate()
+                        }
+            }
+        }.frame(height: itemWidth * 1.5)
     }
 }

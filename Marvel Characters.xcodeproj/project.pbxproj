@@ -17,6 +17,7 @@
 		192B3C212AC1826F0058E707 /* PhotoLoaderClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C202AC1826F0058E707 /* PhotoLoaderClientStub.swift */; };
 		192B3C232AC182CF0058E707 /* PhotoLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C222AC182CF0058E707 /* PhotoLoaderClient.swift */; };
 		192B3C282AC186FE0058E707 /* PhotoLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C272AC186FE0058E707 /* PhotoLoaderTests.swift */; };
+		19657EF82AC1A4FB008575FF /* ContentStateViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657EF72AC1A4FB008575FF /* ContentStateViewModifier.swift */; };
 		19B421BF2AC197A600AD99CE /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19B421BE2AC197A600AD99CE /* Secrets.plist */; };
 		19B421C12AC197C700AD99CE /* SecretsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B421C02AC197C700AD99CE /* SecretsDecoder.swift */; };
 		BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */; };
@@ -117,6 +118,7 @@
 		192B3C202AC1826F0058E707 /* PhotoLoaderClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderClientStub.swift; sourceTree = "<group>"; };
 		192B3C222AC182CF0058E707 /* PhotoLoaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderClient.swift; sourceTree = "<group>"; };
 		192B3C272AC186FE0058E707 /* PhotoLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderTests.swift; sourceTree = "<group>"; };
+		19657EF72AC1A4FB008575FF /* ContentStateViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentStateViewModifier.swift; sourceTree = "<group>"; };
 		19B421BE2AC197A600AD99CE /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		19B421C02AC197C700AD99CE /* SecretsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsDecoder.swift; sourceTree = "<group>"; };
 		BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
@@ -652,6 +654,7 @@
 				BABCC27E2ABF89040071A0B7 /* CarouselView */,
 				BA4D15352AC0263E00465C0D /* PhotoLoading */,
 				BAE396002AC09704007F7813 /* SizeListener.swift */,
+				19657EF72AC1A4FB008575FF /* ContentStateViewModifier.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -847,6 +850,7 @@
 				BAE3960E2AC09EBC007F7813 /* FeaturedViewFactory.swift in Sources */,
 				BA2DB6EA2ABDFCC000CB29C7 /* AdditionalLink.swift in Sources */,
 				BA2DB6E02ABDF74E00CB29C7 /* URLItemDTO.swift in Sources */,
+				19657EF82AC1A4FB008575FF /* ContentStateViewModifier.swift in Sources */,
 				BAE395FE2AC096DB007F7813 /* FeaturedView.swift in Sources */,
 				BACA1D662ABF7F8E00AECAB5 /* DicoverView.swift in Sources */,
 				BABCC2832ABF91C10071A0B7 /* HomeView.swift in Sources */,

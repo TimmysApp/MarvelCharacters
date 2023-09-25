@@ -70,7 +70,7 @@ class CharactersListViewController: UIViewController {
         tableView.register(CharacterTableViewCell.self, forCellReuseIdentifier: CharacterTableViewCell.identifier)
         tableView.register(PaginationLoadingTableViewCell.self, forCellReuseIdentifier: PaginationLoadingTableViewCell.identifier)
     }
-    private func update(state: TableViewState) {
+    private func update(state: ContentViewState) {
         switch state {
             case .empty:
                 stateLable.text = "No Characters Available!"
