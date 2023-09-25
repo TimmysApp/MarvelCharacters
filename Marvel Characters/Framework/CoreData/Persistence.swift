@@ -14,7 +14,13 @@ struct PersistenceController {
     private var backgroundContext: NSManagedObjectContext?
 //MARK: - Initializer
     init(inMemory: Bool = false) {
-        container = NSPersistentContainer(name: "Marvel_Characters")
+        let storeName = "Marvel_Characters"
+        let appGroup = "group.swiftlydesign.data"
+        container = NSPersistentContainer(name: storeName)
+        guard let storeURL = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroup)?.appendingPathComponent("\(storeName).sqlite") else {
+            fatalError("Could not find app group")
+        }
+        container.persistentStoreDescriptions = [NSPersistentStoreDescription(url: storeURL)]
         if inMemory {
             container.persistentStoreDescriptions.first!.url = URL(fileURLWithPath: "/dev/null")
         }
