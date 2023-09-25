@@ -21,6 +21,8 @@
 		19657EFA2AC1A5DE008575FF /* FeaturedViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657EF92AC1A5DE008575FF /* FeaturedViewModelTests.swift */; };
 		19657EFD2AC1A65F008575FF /* CharacterDetailsSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657EFC2AC1A65F008575FF /* CharacterDetailsSourceStub.swift */; };
 		19657EFF2AC1A730008575FF /* FeaturedContentEntityMockFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657EFE2AC1A730008575FF /* FeaturedContentEntityMockFactory.swift */; };
+		19657F172AC1BC0C008575FF /* HomeViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657F162AC1BC0C008575FF /* HomeViewModelTests.swift */; };
+		19657F192AC1BEBD008575FF /* CharactersSourceStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19657F182AC1BEBD008575FF /* CharactersSourceStub.swift */; };
 		19B421BF2AC197A600AD99CE /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19B421BE2AC197A600AD99CE /* Secrets.plist */; };
 		19B421C12AC197C700AD99CE /* SecretsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B421C02AC197C700AD99CE /* SecretsDecoder.swift */; };
 		BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */; };
@@ -125,6 +127,8 @@
 		19657EF92AC1A5DE008575FF /* FeaturedViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedViewModelTests.swift; sourceTree = "<group>"; };
 		19657EFC2AC1A65F008575FF /* CharacterDetailsSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterDetailsSourceStub.swift; sourceTree = "<group>"; };
 		19657EFE2AC1A730008575FF /* FeaturedContentEntityMockFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedContentEntityMockFactory.swift; sourceTree = "<group>"; };
+		19657F162AC1BC0C008575FF /* HomeViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewModelTests.swift; sourceTree = "<group>"; };
+		19657F182AC1BEBD008575FF /* CharactersSourceStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersSourceStub.swift; sourceTree = "<group>"; };
 		19B421BE2AC197A600AD99CE /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
 		19B421C02AC197C700AD99CE /* SecretsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsDecoder.swift; sourceTree = "<group>"; };
 		BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
@@ -295,6 +299,7 @@
 			children = (
 				BA00B9272ABECC3700FE94BE /* CharactersRemoteSourceStub.swift */,
 				BA00B92B2ABECE1E00FE94BE /* CharactersLocalSourceStub.swift */,
+				19657F182AC1BEBD008575FF /* CharactersSourceStub.swift */,
 			);
 			path = Characters;
 			sourceTree = "<group>";
@@ -303,6 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				19657EF92AC1A5DE008575FF /* FeaturedViewModelTests.swift */,
+				19657F162AC1BC0C008575FF /* HomeViewModelTests.swift */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -927,9 +933,11 @@
 				191071E12AC1639900F23E36 /* CharacterDetailsLocalSourceStub.swift in Sources */,
 				192B3C212AC1826F0058E707 /* PhotoLoaderClientStub.swift in Sources */,
 				BA53C4882ABF2D8500F2ED45 /* CharacterDatabaseTests.swift in Sources */,
+				19657F172AC1BC0C008575FF /* HomeViewModelTests.swift in Sources */,
 				19657EFA2AC1A5DE008575FF /* FeaturedViewModelTests.swift in Sources */,
 				BA00B9282ABECC3700FE94BE /* CharactersRemoteSourceStub.swift in Sources */,
 				19657EFD2AC1A65F008575FF /* CharacterDetailsSourceStub.swift in Sources */,
+				19657F192AC1BEBD008575FF /* CharactersSourceStub.swift in Sources */,
 				191071E42AC163AA00F23E36 /* CharacterDetailsRemoteSourceStub.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

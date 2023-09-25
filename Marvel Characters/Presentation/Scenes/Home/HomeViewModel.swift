@@ -13,7 +13,7 @@ import Foundation
     @Published var displayedCharacterStyle: CharacterDisplayStyle?
     @Published var displayStyle = HomeDisplayStyle.list
     @Published var state = ContentViewState.loading
-    @Published var characters = [CharacterDisplayStyle]()
+    @Published var characters = [CharacterDisplayStyle.pagination]
 //MARK: - Closures
     var reloadTableView: (() -> Void)?
 //MARK: - Properties
@@ -28,25 +28,29 @@ import Foundation
         self.useCase = useCase
     }
 //MARK: - Functions
-    private func loadCharacters() async {
-        let offset = count - 1
+    private func loadCharacters(offset: Int, paginating: Bool) async {
         let prameters = CharactersParameters(limit: limit, offset: offset)
         do {
             let result = try await useCase.fetch(using: prameters)
-            update(with: result)
+            update(with: result, paginating: paginating)
         }catch {
             print(error)
             state = .error(error.localizedDescription)
         }
     }
-    private func update(with data: [Character]) {
+    private func update(with data: [Character], paginating: Bool) {
         let newDataCount = data.count
-        _ = characters.popLast()
-        if count == 1 {
+        guard newDataCount > 0 else {
+            state = .empty
+            return
+        }
+        if paginating {
+            _ = characters.popLast()
+            characters.append(contentsOf: data.map({CharacterDisplayStyle.info($0)}))
+        }else {
             state = .loaded
             characters = data.map({CharacterDisplayStyle.info($0)})
-        }else {
-            characters.append(contentsOf: data.map({CharacterDisplayStyle.info($0)}))
+            count = 1
         }
         count += newDataCount
         addPaginationState()
@@ -59,19 +63,14 @@ import Foundation
     }
 //MARK: - View Functions
     func load() async {
-        state = .loading
-        await loadCharacters()
-        addPaginationState()
+        await loadCharacters(offset: 0, paginating: false)
         displayedCharacterStyle = characters.first
     }
-    func refresh() {
-        Task {
-            count = 1
-            await loadCharacters()
-        }
+    func refresh() async {
+        await loadCharacters(offset: 0, paginating: false)
     }
     func paginate() async {
-        await loadCharacters()
+        await loadCharacters(offset: count, paginating: true)
     }
     func setUp(cell: CharacterTableViewCell, at indexPath: IndexPath) {
         guard let character = characters[indexPath.row].get() else {return}

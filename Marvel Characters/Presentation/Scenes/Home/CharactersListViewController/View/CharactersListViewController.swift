@@ -36,7 +36,10 @@ class CharactersListViewController: UIViewController {
         viewModel.switchStyle(to: .carousel)
     }
     @objc private func refreshContent() {
-        viewModel.refresh()
+        Task {
+            await viewModel.refresh()
+            refreshControl.endRefreshing()
+        }
     }
 //MARK: - Functions
     private func setUp() {
@@ -47,7 +50,6 @@ class CharactersListViewController: UIViewController {
     private func bindViewModel() {
         viewModel.reloadTableView = { [weak self] in
             self?.tableView.reloadData()
-            self?.refreshControl.endRefreshing()
         }
         viewModel.$state
             .sink { [weak self] state in
