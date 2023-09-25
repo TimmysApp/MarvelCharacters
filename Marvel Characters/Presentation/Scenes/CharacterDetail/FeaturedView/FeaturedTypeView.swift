@@ -32,6 +32,7 @@ struct FeaturedTypeView: View {
                             .fontWeight(.medium)
                             .foregroundStyle(Color.text)
                             .multilineTextAlignment(.center)
+                            .lineLimit(3)
                     }.frame(width: width)
                 }
             }

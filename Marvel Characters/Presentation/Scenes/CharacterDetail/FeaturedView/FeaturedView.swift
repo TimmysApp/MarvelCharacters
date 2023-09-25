@@ -27,6 +27,6 @@ struct FeaturedView: View {
         }.overlay {
             EmptyView()
                 .content(state: viewModel.state, style: Color.secondaryText)
-        }
+        }.background(Color.background)
     }
 }

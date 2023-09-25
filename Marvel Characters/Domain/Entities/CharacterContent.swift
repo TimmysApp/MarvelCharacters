@@ -52,6 +52,6 @@ extension CharacterContent: Datable {
         guard let object, let type = ContentType(rawValue: Int(object.type)) else {
             return nil
         }
-        return CharacterContent(characterID: Int(object.characterID), id: Int(object.oid), title: object.title ?? "", description: object.contentDescription ?? "", type: type)
+        return CharacterContent(characterID: Int(object.characterID), id: Int(object.oid), title: object.title ?? "", description: object.contentDescription ?? "", thumbnailPath: object.thumbnailPath, type: type)
     }
 }

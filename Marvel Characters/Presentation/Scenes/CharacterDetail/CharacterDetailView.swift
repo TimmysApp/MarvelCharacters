@@ -55,11 +55,26 @@ struct CharacterDetailView: View {
             .sheet(isPresented: $featuredSheetPresented) {
                 FeaturedViewFactory.assemble(for: character.id ?? 0)
                     .presentationDetents([.height(sheetHeight), .fraction(0.9)])
-                    .presentationCornerRadius(30)
-                    .interactiveDismissDisabled()
-                    .presentationBackgroundInteraction(.enabled)
-                    .presentationBackground(Color.background)
+                    .addActiveBackgroundPresentationConfigs()
                     .presentationDragIndicator(.visible)
             }.toolbar(.hidden, for: .navigationBar)
+            .onChange(of: featuredSheetPresented) { newValue in
+                guard !newValue else {return}
+                dismiss.callAsFunction()
+            }
+    }
+}
+
+extension View {
+    @ViewBuilder func addActiveBackgroundPresentationConfigs() -> some View {
+        if #available(iOS 16.4, *) {
+            self
+                .presentationCornerRadius(30)
+                .interactiveDismissDisabled()
+                .presentationBackgroundInteraction(.enabled)
+                .presentationBackground(Color.background)
+        }else {
+            self
+        }
     }
 }
