@@ -17,6 +17,8 @@
 		192B3C212AC1826F0058E707 /* PhotoLoaderClientStub.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C202AC1826F0058E707 /* PhotoLoaderClientStub.swift */; };
 		192B3C232AC182CF0058E707 /* PhotoLoaderClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C222AC182CF0058E707 /* PhotoLoaderClient.swift */; };
 		192B3C282AC186FE0058E707 /* PhotoLoaderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 192B3C272AC186FE0058E707 /* PhotoLoaderTests.swift */; };
+		19B421BF2AC197A600AD99CE /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 19B421BE2AC197A600AD99CE /* Secrets.plist */; };
+		19B421C12AC197C700AD99CE /* SecretsDecoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 19B421C02AC197C700AD99CE /* SecretsDecoder.swift */; };
 		BA00B91F2ABEC64600FE94BE /* CharacterMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */; };
 		BA00B9222ABEC74300FE94BE /* AdditionalLinkMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */; };
 		BA00B9242ABECBCD00FE94BE /* CharactersRepositoryTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA00B9232ABECBCD00FE94BE /* CharactersRepositoryTests.swift */; };
@@ -115,6 +117,8 @@
 		192B3C202AC1826F0058E707 /* PhotoLoaderClientStub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderClientStub.swift; sourceTree = "<group>"; };
 		192B3C222AC182CF0058E707 /* PhotoLoaderClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderClient.swift; sourceTree = "<group>"; };
 		192B3C272AC186FE0058E707 /* PhotoLoaderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLoaderTests.swift; sourceTree = "<group>"; };
+		19B421BE2AC197A600AD99CE /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Secrets.plist; sourceTree = "<group>"; };
+		19B421C02AC197C700AD99CE /* SecretsDecoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretsDecoder.swift; sourceTree = "<group>"; };
 		BA00B91E2ABEC64600FE94BE /* CharacterMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterMapper.swift; sourceTree = "<group>"; };
 		BA00B9212ABEC74300FE94BE /* AdditionalLinkMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdditionalLinkMapper.swift; sourceTree = "<group>"; };
 		BA00B9232ABECBCD00FE94BE /* CharactersRepositoryTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharactersRepositoryTests.swift; sourceTree = "<group>"; };
@@ -426,6 +430,8 @@
 			isa = PBXGroup;
 			children = (
 				BA2DB6A02ABDEA2400CB29C7 /* Marvel_CharactersApp.swift */,
+				19B421BE2AC197A600AD99CE /* Secrets.plist */,
+				19B421C02AC197C700AD99CE /* SecretsDecoder.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -801,6 +807,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				19B421BF2AC197A600AD99CE /* Secrets.plist in Resources */,
 				BA2DB6A82ABDEA2500CB29C7 /* Preview Assets.xcassets in Resources */,
 				BAAF6E842ABED6D100A3EC29 /* CharactersListViewController.xib in Resources */,
 				BA2DB6A52ABDEA2500CB29C7 /* Assets.xcassets in Resources */,
@@ -853,6 +860,7 @@
 				BA20A7EF2AC0665E00D09330 /* CharacterContent.swift in Sources */,
 				BA4D15322AC024E800465C0D /* PhotoCache.swift in Sources */,
 				BABCC27D2ABF88CC0071A0B7 /* ScrollViewExtensions.swift in Sources */,
+				19B421C12AC197C700AD99CE /* SecretsDecoder.swift in Sources */,
 				BAD02DFF2AC06F7B0051330E /* CharacterDetailsRouteFactory.swift in Sources */,
 				BAD02DF42AC06CD80051330E /* CharacterContentMapper.swift in Sources */,
 				BA25099E2ABE088300871222 /* CharactersRoute.swift in Sources */,
