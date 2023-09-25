@@ -18,7 +18,7 @@ extension CharacterDetailsRepository: CharacterDetailsSource {
             let types = CharacterContent.ContentType.allCases
             types.forEach { type in
                 group.addTask {
-                    return (type, try await useCase.fetch(for: characterID, type: type))
+                    return (type, (try? await useCase.fetch(for: characterID, type: type)) ?? [])
                 }
             }
             let sectionsDictionary = try await group.reduce(into: [:]) { partialResult, item in
