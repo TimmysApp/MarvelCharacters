@@ -13,7 +13,7 @@ actor PhotoLoader: ObservableObject {
 //MARK: - Properties
     private let objectContext: NSManagedObjectContext
     private let session: PhotoLoaderClient
-    private var tasks: [URL: Task<UIImage?, Error>] = [:]
+    private var tasks: [URL: Task<UIImage?, Never>] = [:]
     var cacheStore = NSCache<NSURL, UIImage>()
     var runningTasks: Int {
         return tasks.count
@@ -50,17 +50,19 @@ actor PhotoLoader: ObservableObject {
         }
         guard let task = tasks[url] else {
             let task = Task {
-                let data = try await session.load(for: url)
-                await cache(data: data, for: url)
-                let image = UIImage(data: data)
-                storeInMemory(image, for: url)
+                let data = try? await session.load(for: url)
+                let image = UIImage(data: data ?? Data())
+                if let image {
+                    await cache(data: data, for: url)
+                    storeInMemory(image, for: url)
+                }
                 tasks.removeValue(forKey: url)
                 return image
             }
             tasks[url] = task
-            return try? await task.value
+            return await task.value
         }
-        return try? await task.value
+        return await task.value
     }
     private func cache(data: Data?, for url: URL) async {
         await withCheckedContinuation { continuation in
