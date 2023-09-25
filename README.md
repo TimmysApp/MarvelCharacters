@@ -57,7 +57,7 @@ To run the app locally and explore its features, follow these steps:
 
 The app uses third-party libraries and frameworks for specific functionalities. These dependencies are managed via Swift Package Manager:
 
-- [TimmysApp/DataStructDataStruct](https://github.com/TimmysApp/DataStruct)
+- [TimmysApp/DataStruct](https://github.com/TimmysApp/DataStruct)
 - [TimmysApp/NetworkUI](https://github.com/TimmysApp/NetworkUI)
 - [Juanpe/SkeletonView](https://github.com/Juanpe/SkeletonView)
 
